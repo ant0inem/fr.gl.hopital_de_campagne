@@ -1,2 +1,6 @@
 eclipse.preferences.version=1
+<<<<<<< Updated upstream
 encoding//src/fr/gl/hopital_de_campagne/controleur/RandomControleur.java=ISO-8859-1
+=======
+encoding/<project>=ISO-8859-1
+>>>>>>> Stashed changes
