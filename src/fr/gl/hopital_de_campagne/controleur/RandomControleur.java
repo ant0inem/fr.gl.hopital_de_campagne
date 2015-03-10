@@ -1,5 +1,6 @@
 package fr.gl.hopital_de_campagne.controleur;
-// Cette classe ne sert vraiment Ã  rien. Normal, Bruno l'a crÃ©Ã©e :-)
+// Cette classe ne sert vraiment à rien. Normal, Bruno l'a créée :-)
 public class RandomControleur {
 
+	
 }
