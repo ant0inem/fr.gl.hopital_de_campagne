@@ -1,0 +1,11 @@
+window_sizes 1304 745 320 960 512 82
+diagrams
+  active  usecasediagram_ref 128125 // Use Case - Général
+    978 587 100 4 0 0
+end
+show_stereotypes
+selected usecasediagram_ref 128125 // Use Case - Général
+open
+  usecaseview_ref 128125 // Modelisation
+end
+end

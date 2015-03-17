@@ -1,0 +1,46 @@
+format 76
+
+classcanvas 128125 class_ref 128125 // Médecin
+  class_drawing_mode default show_context_mode default show_stereotype_properties default
+  xyz 145 212 2000
+end
+classcanvas 128253 class_ref 128253 // Logisticien
+  class_drawing_mode default show_context_mode default show_stereotype_properties default
+  xyz 108 74 2000
+end
+classcanvas 128381 class_ref 128381 // Pharmacien
+  class_drawing_mode default show_context_mode default show_stereotype_properties default
+  xyz 134 322 2000
+end
+classcanvas 128509 class_ref 128509 // Déménageur
+  class_drawing_mode default show_context_mode default show_stereotype_properties default
+  xyz 133 430 2000
+end
+usecasecanvas 128637 usecase_ref 128125 // Consulter la base de données
+  xyzwh 427 187 3005 64 32 label_xy 387 219
+end
+usecasecanvas 129149 usecase_ref 128253 // Ajouter un avion à la BdD
+  xyzwh 430 41 3005 64 32 label_xy 401 73
+end
+usecasecanvas 129277 usecase_ref 128381 // Ajouter un équipement
+  xyzwh 444 131 3005 64 32 label_xy 422 163
+end
+usecasecanvas 129533 usecase_ref 128509 // Ajouter un médicament à la base de données
+  xyzwh 420 292 3005 64 32 label_xy 344 324
+end
+usecasecanvas 129789 usecase_ref 128637 // Retirer un médicament de la base de données
+  xyzwh 434 389 3005 64 32 label_xy 357 421
+end
+line 128765 --->
+  from ref 128253 z 3006 to ref 128637
+line 128893 --->
+  from ref 128125 z 3006 to ref 128637
+line 129021 --->
+  from ref 128381 z 3006 to ref 128637
+line 129405 --->
+  from ref 128253 z 3006 to ref 129277
+line 129661 --->
+  from ref 128381 z 3006 to ref 129533
+line 129917 --->
+  from ref 128381 z 3006 to ref 129789
+end
