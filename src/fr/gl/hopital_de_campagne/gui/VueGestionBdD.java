@@ -8,6 +8,7 @@ import javax.swing.JTabbedPane;
 
 @SuppressWarnings("serial")
 public class VueGestionBdD extends JPanel {
+	private JPanel center;
 
 	/**
 	 * Create the panel.
@@ -23,7 +24,18 @@ public class VueGestionBdD extends JPanel {
 		
 		JPanel editPane = new JPanel();
 		tabbedPane.addTab("Modifier/Supprimer un élément", null, editPane, null);
+		
+		center = new JPanel();
+		add(center, BorderLayout.CENTER);
 
+	}
+
+	public JPanel getCenter() {
+		return center;
+	}
+
+	public void setCenter(JPanel center) {
+		this.center = center;
 	}
 
 }
