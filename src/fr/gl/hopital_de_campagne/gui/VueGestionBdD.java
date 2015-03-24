@@ -1,9 +1,12 @@
 package fr.gl.hopital_de_campagne.gui;
 
 import javax.swing.JPanel;
+
 import java.awt.BorderLayout;
+
 import javax.swing.JTabbedPane;
 
+@SuppressWarnings("serial")
 public class VueGestionBdD extends JPanel {
 
 	/**
