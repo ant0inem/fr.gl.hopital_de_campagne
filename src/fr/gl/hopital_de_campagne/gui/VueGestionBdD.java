@@ -36,6 +36,7 @@ public class VueGestionBdD extends JPanel {
 
 	public void setCenter(JPanel center) {
 		this.center = center;
+		add(center, BorderLayout.CENTER);
 	}
 
 }
