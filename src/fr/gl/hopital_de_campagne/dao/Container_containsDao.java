@@ -1,6 +1,5 @@
 package fr.gl.hopital_de_campagne.dao;
 // RESTE Container_Secteur_idSecteur à écrire.
-import java.util.List;
 
 import javax.persistence.*;
 
