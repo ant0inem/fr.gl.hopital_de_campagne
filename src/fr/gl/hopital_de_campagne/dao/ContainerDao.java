@@ -1,5 +1,7 @@
 package fr.gl.hopital_de_campagne.dao;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 public class ContainerDao {
@@ -128,13 +130,13 @@ public class ContainerDao {
 
 	@OneToMany
 	@JoinColumn(name = "idSecteur")
-	SecteurDao secteur;
+	private List<SecteurDao> secteurs;
 
-	public void setSecteur(SecteurDao s) {
-		secteur = s;
+	public void setSecteurs(List<SecteurDao> secteurs) {
+		this.secteurs = secteurs;
 	}
 
-	public SecteurDao getSecteur() {
-		return secteur;
+	public List<SecteurDao> getSecteurs() {
+		return secteurs;
 	}
 }
