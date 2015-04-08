@@ -1,7 +1,6 @@
 package fr.gl.hopital_de_campagne.gui;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -22,7 +21,7 @@ public class MyTable extends  Table {
 				data[i][j]=o.getAttribut(i, j);
 			}
 		}
-		jTable = new JTable(data, columnNames);
+		jTable = new JTable(new MyTableModel(data, columnNames));
 	}
 
 
@@ -31,6 +30,8 @@ public class MyTable extends  Table {
 		JPanel p = new JPanel(new BorderLayout());
 		JScrollPane s = new JScrollPane(jTable);
 		jTable.setFillsViewportHeight(true);
+		jTable.setRowSelectionAllowed(true);
+		jTable.setColumnSelectionAllowed(false);
 		p.add(s, BorderLayout.CENTER);
 		return p;
 	}
