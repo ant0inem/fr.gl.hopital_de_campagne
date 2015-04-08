@@ -23,8 +23,7 @@ public class GuiUnderTest {
 		JPanel pane = new JPanel();
 		pane.setBackground(Color.GREEN);
 		
-		vue.setCenter(table.getTable());
-//		vue.setCenter(pane);
+		vue.setDisplayableClass(content);
 		
 		w.setContentPane(vue);
 //		w.setContentPane(pane);

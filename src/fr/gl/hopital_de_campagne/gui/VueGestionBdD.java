@@ -3,12 +3,14 @@ package fr.gl.hopital_de_campagne.gui;
 import javax.swing.JPanel;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 
 import javax.swing.JTabbedPane;
 
 @SuppressWarnings("serial")
 public class VueGestionBdD extends JPanel {
-	private JPanel center;
+	
+	private JTabbedPane tabbedPane;
 
 	/**
 	 * Create the panel.
@@ -16,8 +18,7 @@ public class VueGestionBdD extends JPanel {
 	public VueGestionBdD() {
 		setLayout(new BorderLayout(0, 0));
 		
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		add(tabbedPane, BorderLayout.SOUTH);
+		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		
 		JPanel addItemPane = new JPanel();
 		tabbedPane.addTab("Ajouter un élément", null, addItemPane, null);
@@ -25,18 +26,17 @@ public class VueGestionBdD extends JPanel {
 		JPanel editPane = new JPanel();
 		tabbedPane.addTab("Modifier/Supprimer un élément", null, editPane, null);
 		
-		center = new JPanel();
-		add(center, BorderLayout.CENTER);
+		add(tabbedPane, BorderLayout.SOUTH);
+		
+		add(new JPanel(), BorderLayout.CENTER);
 
 	}
 
-	public JPanel getCenter() {
-		return center;
-	}
-
-	public void setCenter(JPanel center) {
-		this.center = center;
-		add(center, BorderLayout.CENTER);
+	public void setDisplayableClass(DisplayableClass o) {
+		Table table = new MyTable(o);
+		add(table.getTable(), BorderLayout.CENTER);
+		JPanel pane1 = new PaneAddElement(o);
+		tabbedPane.setComponentAt(0, pane1);
 	}
 
 }
