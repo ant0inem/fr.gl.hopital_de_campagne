@@ -1,5 +1,8 @@
 package fr.gl.hopital_de_campagne.gui;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -25,8 +28,10 @@ public class MyTable extends  Table {
 
 	@Override
 	public JPanel getTable() {
-		JPanel p = new JPanel();
-		p.add(new JScrollPane(jTable));
+		JPanel p = new JPanel(new BorderLayout());
+		JScrollPane s = new JScrollPane(jTable);
+		jTable.setFillsViewportHeight(true);
+		p.add(s, BorderLayout.CENTER);
 		return p;
 	}
 
