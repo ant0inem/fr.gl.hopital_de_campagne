@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -14,6 +16,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 public class PaneModifyElement extends JPanel {
+	
+	private List<JTextField> champs;
 	
 	public PaneModifyElement(DisplayableClass o, ActionListener l) {
 		
@@ -36,11 +40,14 @@ public class PaneModifyElement extends JPanel {
 		JPanel center = new JPanel();
 		center.setLayout(new BoxLayout(center, BoxLayout.X_AXIS));
 		
+		champs = new ArrayList<JTextField>();
 		for(int i=0; i<o.getNbAttribut(); i++) {
 			JPanel couplePane = new JPanel();
 			couplePane.setLayout(new BoxLayout(couplePane, BoxLayout.Y_AXIS));
 			couplePane.add(new JLabel(o.getAttributName(i)));
-			couplePane.add(new JTextField());
+			JTextField champ = new JTextField();
+			champs.add(champ);
+			couplePane.add(champ);
 			couplePane.setMinimumSize(new Dimension(200,40));
 			couplePane.setMaximumSize(new Dimension(200,40));
 			couplePane.setPreferredSize(new Dimension(200,40));
@@ -54,4 +61,10 @@ public class PaneModifyElement extends JPanel {
 		
 	}
 
+	public List<String> getFields() {
+		List<String> fields = new ArrayList<String>();
+		for(JTextField champ:champs) fields.add(champ.getText());
+		return fields;
+	}
+	
 }
