@@ -20,65 +20,77 @@ public class _Main_TestDao {
 		
 		static void test()
 		{
-			EntityManagerFactory factory = Persistence.createEntityManagerFactory("Projet GL");
+			EntityManagerFactory factory = Persistence.createEntityManagerFactory("Projet_GL");
 			
-			EntityManager em = factory.createEntityManager();
+			EntityManager ms = factory.createEntityManager();
 			
+			ArrayList<SecteurDao> ss = new ArrayList<SecteurDao>();
 			SecteurDao s = new SecteurDao();
-			
 			s.setSecteurName("Secteur 45");
 			s.setSecteurLieu("En Allemagne, vers Dortmund");
+			ss.add(s);
 			
-			
+			ArrayList<EquipementDao> es = new ArrayList<EquipementDao>();
+			EquipementDao e = new EquipementDao();
+			e.setEquipementLength(1);
+			e.setEquipementHeight(2);
+			e.setEquipementNom("Tente");
+			e.setEquipementDescription("Ceci est une description");
+			e.setEquipementWeight(3);
+			e.setEquipementType("Youuuh");
+			e.setEquipementNatureColis("Empoisonné");
+			e.setEquipementValue(9999);
+			es.add(e);
 			
 			MedicamentDao m = new MedicamentDao();
+			m.setMedicamentFamille("Antalgiques");
+			m.setMedicamentDCI("Wtf");
+			m.setMedicamentQuantitéParBoite(100);
+			m.setMedicamentDosage("3 comprimés par jour");
+		//	m.setMedicamentDLU("Mon May 04 09:51:52 CDT 2009");
+			m.setMedicamentDotationU7("Wttttf");
+			m.setMedicamentLot("330953905");
 			
-			/* emprunt doit d�finir le lien d'association */
-			/* car la table emprunt g�re la cl� �trang�re */
-			e.setLecteur(l);
+			AvionDao a = new AvionDao();
+			ConfigurationDao cfg = new ConfigurationDao();
+			ContainerDao c = new ContainerDao();
+			Container_containsDao cc = new Container_containsDao();
 			
-			ArrayList<Ouvrage> lo = new ArrayList<Ouvrage>();
+			/* Clés étrangères */
+			cfg.setAvion(a);
+			cfg.setContainer(c);
 			
-			OuvrageNumerique on = new OuvrageNumerique();
-			on.setTitle("Hollywood Vampires");
-			on.setFormat(Format.MP3);
+			c.setSecteurs(ss);
 			
-			lo.add(on);
+			cc.setContainer(c);
+			cc.setEquipements(es);
+			//Reste la clé étrangère Container_Secteur_idSecteur de Container_contains
+			m.setEquipement(e);
 			
-			Ouvrage o = new Ouvrage();
-			o.setTitle("Soumission");
 			
-			lo.add(o);
+			/* Persist */
+
+			ms.getTransaction().begin();
 			
-			/* idem. l'objet emprunt g�re le lien d'association*/
-			e.setOuvrages(lo);
+			ms.persist(e);
 			
-			em.getTransaction().begin();
+			ms.persist(m);
 			
-			em.persist(l);
-			
-			em.persist(o);
-			
-			em.persist(on);
-			
-			em.persist(e);
-			
-			em.getTransaction().commit();
+			ms.getTransaction().commit();
 			
 			/* le lien d'association est sauvegard� */
 			/* le lien r�ciproque peut �tre mis � jour automatiquement*/
-			em.refresh(l);
+			ms.refresh(e);
 			
-			em.refresh(o);
 			
-			System.out.println(o.getEmprunts().get(0));
+			System.out.println(m.getEquipement());
 			
-			Query tq = em.createNativeQuery("select * from Emprunt", Emprunt.class);
+			Query tq = ms.createNativeQuery("select * from MedicamentDao", fr.gl.hopital_de_campagne.dao.MedicamentDao.class);
 			List result = tq.getResultList();
-			Emprunt empt = (Emprunt) result.get(0);
+			MedicamentDao medt = (MedicamentDao) result.get(0);
 			
-			TypedQuery<Emprunt> tp = em.createQuery("select e from Emprunt e", Emprunt.class);
-			List<Emprunt> le = tp.getResultList();
+			TypedQuery<MedicamentDao> mt = ms.createQuery("select m from MedicamentDao m", fr.gl.hopital_de_campagne.dao.MedicamentDao.class);
+			List<MedicamentDao> mmt = mt.getResultList();
 		}	
 		
 	
