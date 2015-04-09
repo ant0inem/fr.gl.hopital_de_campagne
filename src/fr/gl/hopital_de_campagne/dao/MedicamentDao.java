@@ -1,10 +1,12 @@
 package fr.gl.hopital_de_campagne.dao;
-
+// Remplacer String medicamentDLU par Date
 import java.util.Date;
 import java.util.List;
+import java.text.SimpleDateFormat;
 
 import javax.persistence.*;
 
+@Entity
 public class MedicamentDao {
 
 	@Id
@@ -15,7 +17,7 @@ public class MedicamentDao {
 	private String medicamentDCI;
 	private int medicamentQuantitéParBoite;
 	private String medicamentDosage;
-	private Date medicamentDLU;
+	private String medicamentDLU;
 	private String medicamentDotationU7;
 	private String medicamentLot;
 
@@ -71,11 +73,11 @@ public class MedicamentDao {
 		this.medicamentDosage = medicamentDosage;
 	}
 
-	public Date getMedicamentDLU() {
+	public String getMedicamentDLU() {
 		return medicamentDLU;
 	}
 
-	public void setMedicamentDLU(Date medicamentDLU) {
+	public void setMedicamentDLU(String medicamentDLU) {
 		this.medicamentDLU = medicamentDLU;
 	}
 
