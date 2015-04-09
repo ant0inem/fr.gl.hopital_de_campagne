@@ -1,5 +1,4 @@
 package fr.gl.hopital_de_campagne.dao;
-// RESTE Container_Secteur_idSecteur à écrire.
 
 import java.util.List;
 
@@ -12,6 +11,16 @@ public class Container_containsDao {
 	@GeneratedValue
 	private int idContainer_contains;
 	
+	private int quantité;
+	
+	public int getQuantité() {
+		return quantité;
+	}
+
+	public void setQuantité(int quantité) {
+		this.quantité = quantité;
+	}
+
 	public int getIdContainer_contains() {
 		return idContainer_contains;
 	}
@@ -32,7 +41,7 @@ public class Container_containsDao {
 		return container;
 	}
 	
-	@OneToMany
+/*	@OneToMany
 	@JoinColumn(name = "idEquipement")
 	private List<EquipementDao> equipements;
 
@@ -42,5 +51,6 @@ public class Container_containsDao {
 
 	public List<EquipementDao> getEquipements() {
 		return equipements;
-	}
+	}*/
+	
 }

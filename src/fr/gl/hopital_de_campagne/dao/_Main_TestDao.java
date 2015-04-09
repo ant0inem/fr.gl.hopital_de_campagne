@@ -55,6 +55,7 @@ public class _Main_TestDao {
 			ConfigurationDao cfg = new ConfigurationDao();
 			ContainerDao c = new ContainerDao();
 			Container_containsDao cc = new Container_containsDao();
+			cc.setQuantité(300);
 			
 			/* Clés étrangères */
 			cfg.setAvion(a);
@@ -63,7 +64,9 @@ public class _Main_TestDao {
 			c.setSecteurs(ss);
 			
 			cc.setContainer(c);
-			cc.setEquipements(es);
+			/*cc.setEquipements(es);*/
+			
+			
 			//Reste la clé étrangère Container_Secteur_idSecteur de Container_contains
 			m.setEquipement(e);
 			
