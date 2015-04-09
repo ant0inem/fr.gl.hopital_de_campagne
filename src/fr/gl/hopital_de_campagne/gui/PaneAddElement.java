@@ -3,6 +3,7 @@ package fr.gl.hopital_de_campagne.gui;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.event.ActionListener;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -14,13 +15,15 @@ import javax.swing.JTextField;
 
 public class PaneAddElement extends JPanel {
 	
-	public PaneAddElement(DisplayableClass o) {
+	public PaneAddElement(DisplayableClass o, ActionListener l) {
 		
 		super(new BorderLayout());
 		
 		JPanel south = new JPanel(new FlowLayout(FlowLayout.TRAILING));
 		
 		JButton addButton = new JButton("Ajouter");
+		addButton.setActionCommand("ajouter_Elt_BdD");
+		addButton.addActionListener(l);
 		
 		south.add(addButton);
 		

@@ -3,6 +3,7 @@ package fr.gl.hopital_de_campagne.gui;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.event.ActionListener;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -14,14 +15,18 @@ import javax.swing.JTextField;
 
 public class PaneModifyElement extends JPanel {
 	
-	public PaneModifyElement(DisplayableClass o) {
+	public PaneModifyElement(DisplayableClass o, ActionListener l) {
 		
 		super(new BorderLayout());
 		
 		JPanel south = new JPanel(new FlowLayout(FlowLayout.TRAILING));
 		
 		JButton modifyButton = new JButton("Modifier");
+		modifyButton.setActionCommand("modifier_Elt_BdD");
+		modifyButton.addActionListener(l);
 		JButton deleteButton = new JButton("Supprimer");
+		deleteButton.setActionCommand("supprimer_Elt_BdD");
+		deleteButton.addActionListener(l);
 		
 		south.add(modifyButton);
 		south.add(deleteButton);

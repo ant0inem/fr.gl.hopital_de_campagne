@@ -25,36 +25,49 @@ public class Controleur implements ActionListener, KeyListener, PropertyChangeLi
 	}
 	
 	public void displayContent(DisplayableClass o) {
-		mainWindow.setContentPane(new VueGestionBdD(o));
+		mainWindow.setContentPane(new VueGestionBdD(o, this));
 	}
 
 	@Override
-	public void propertyChange(PropertyChangeEvent arg0) {
+	public void propertyChange(PropertyChangeEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void keyPressed(KeyEvent arg0) {
+	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void keyReleased(KeyEvent arg0) {
+	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void keyTyped(KeyEvent arg0) {
+	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
+	public void actionPerformed(ActionEvent e) {
+
+		String action = e.getActionCommand();
+		
+		if("ajouter_Elt_BdD".equals(action)) {
+			
+		}
+		
+		if("modifier_Elt_BdD".equals(action)) {
+			
+		}
+		
+		if("supprimer_Elt_BdD".equals(action)) {
+			
+		}
 		
 	}	
 
