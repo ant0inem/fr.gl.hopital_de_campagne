@@ -31,12 +31,21 @@ public class VueGestionBdD extends JPanel {
 		add(new JPanel(), BorderLayout.CENTER);
 
 	}
+	
+	public VueGestionBdD(DisplayableClass o) {
+		this();
+		this.setDisplayableClass(o);
+	}
 
 	public void setDisplayableClass(DisplayableClass o) {
 		Table table = new MyTable(o);
 		add(table.getTable(), BorderLayout.CENTER);
+		
 		JPanel pane1 = new PaneAddElement(o);
 		tabbedPane.setComponentAt(0, pane1);
+		
+		JPanel pane2 = new PaneModifyElement(o);
+		tabbedPane.setComponentAt(1, pane2);
 	}
 
 }
