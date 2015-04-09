@@ -1,9 +1,11 @@
 package fr.gl.hopital_de_campagne.dao;
-// avionName clé primaire ??? TODO
+// avionName clé primaire ???
+// String dateDepart // dateRetour en Date
 import java.util.Date;
 
 import javax.persistence.*;
 
+@Entity
 public class ConfigurationDao {
 	
 	@Id
@@ -12,8 +14,8 @@ public class ConfigurationDao {
 	
 	private String avionName;
 	private String destination;
-	private Date dateDepart;
-	private Date dateRetour;
+	private String dateDepart;
+	private String dateRetour;
 	private String typeMission;
 	
 	@OneToOne
@@ -64,19 +66,19 @@ public class ConfigurationDao {
 		this.destination = destination;
 	}
 
-	public Date getDateDepart() {
+	public String getDateDepart() {
 		return dateDepart;
 	}
 
-	public void setDateDepart(Date dateDepart) {
+	public void setDateDepart(String dateDepart) {
 		this.dateDepart = dateDepart;
 	}
 
-	public Date getDateRetour() {
+	public String getDateRetour() {
 		return dateRetour;
 	}
 
-	public void setDateRetour(Date dateRetour) {
+	public void setDateRetour(String dateRetour) {
 		this.dateRetour = dateRetour;
 	}
 

@@ -47,7 +47,7 @@ public class _Main_TestDao {
 			m.setMedicamentDCI("Wtf");
 			m.setMedicamentQuantitéParBoite(100);
 			m.setMedicamentDosage("3 comprimés par jour");
-		//	m.setMedicamentDLU("Mon May 04 09:51:52 CDT 2009");
+			m.setMedicamentDLU("10/04/2015");
 			m.setMedicamentDotationU7("Wttttf");
 			m.setMedicamentLot("330953905");
 			

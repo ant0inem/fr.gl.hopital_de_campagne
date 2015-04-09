@@ -8,6 +8,18 @@ import javax.persistence.*;
 @Entity
 public class Container_containsDao {
 
+	@Id
+	@GeneratedValue
+	private int idContainer_contains;
+	
+	public int getIdContainer_contains() {
+		return idContainer_contains;
+	}
+
+	public void setIdContainer_contains(int idContainer_contains) {
+		this.idContainer_contains = idContainer_contains;
+	}
+
 	@OneToOne
 	@JoinColumn(name = "idContainer")
 	ContainerDao container;
