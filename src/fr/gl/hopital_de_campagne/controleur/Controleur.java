@@ -8,7 +8,9 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 import javax.swing.JFrame;
+
 import fr.gl.hopital_de_campagne.gui.DisplayableClass;
+import fr.gl.hopital_de_campagne.gui.MenuGUI;
 import fr.gl.hopital_de_campagne.gui.VueGestionBdD;
 
 
@@ -21,7 +23,7 @@ public class Controleur implements ActionListener, KeyListener, PropertyChangeLi
 		mainWindow = new JFrame();
 		mainWindow.setSize(800, 600);
 		mainWindow.setVisible(true);
-		
+		mainWindow.setJMenuBar((new MenuGUI(this)).getMenuBar());
 	}
 	
 	public void displayContent(DisplayableClass o) {
@@ -57,16 +59,34 @@ public class Controleur implements ActionListener, KeyListener, PropertyChangeLi
 
 		String action = e.getActionCommand();
 		
-		if("ajouter_Elt_BdD".equals(action)) {
-			
-		}
+		switch(action){
 		
-		if("modifier_Elt_BdD".equals(action)) {
+		case "ajouter_Elt_BdD" :
+			break;
 			
-		}
-		
-		if("supprimer_Elt_BdD".equals(action)) {
+		case "modifier_Elt_BdD" :
+			break;
 			
+		case "supprimer_Elt_BdD" :
+			break;
+			
+		case "viewContainer" :
+			/*
+			 * shows the containers in the table (1 ligne for each container)
+			 */
+			break;
+			
+		case "viewMed" :
+			/*
+			 * shows only the meds in the table 
+			 */
+			break;
+			
+		case "viewObject" :
+			/*
+			 * shows all objects in the table
+			 */
+			break;
 		}
 		
 	}	
