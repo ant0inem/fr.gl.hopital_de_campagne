@@ -83,5 +83,13 @@ public class VueGestionBdD extends JPanel {
 	public List<String> getCurrentModifyFields() {
 		return pane2.getFields();
 	}
+	
+	/**
+	 * Modify the field in the PaneModifyElement
+	 * @param fields the set of String to write in the PaneModifyElement
+	 */
+	public void setCurrentModifyFields(List<String> fields) {
+		pane2.setFields(fields);
+	}
 
 }

@@ -67,4 +67,13 @@ public class PaneModifyElement extends JPanel {
 		return fields;
 	}
 	
+	public void setFields(List<String> fields) {
+		int i=0;
+		if(champs.size()==0) return;
+		for(String field:fields) {
+			champs.get(i).setText(field);
+			i++;
+		}
+	}
+	
 }
