@@ -1,6 +1,7 @@
 package fr.gl.hopital_de_campagne.gui;
 
 import java.lang.Object;
+import java.util.ArrayList;
 
 /**
  * Les instances de DisplayableClass peuvent etre afficher comme une ligne
@@ -27,7 +28,7 @@ public interface DisplayableClass {
 
 	/**
 	 * 
-	 * @param i indice de la colonne
+	 * @param j indice de la colonne, i indice de la ligne
 	 * @return valeur a afficher a la ieme ligne
 	 */
 	public abstract Object getAttribut(int i, int j);
@@ -35,7 +36,7 @@ public interface DisplayableClass {
 	/**
 	 * 
 	 * @param i indice de la colonne
-	 * @return nom de la valeur a la ieme ligne
+	 * @return nom de la valeur a la ieme colonne
 	 */
 	public abstract String getAttributName(int i);
 	
@@ -46,4 +47,22 @@ public interface DisplayableClass {
 	 * @return type de la valeur de la colonne
 	 */
 	public abstract int getAttributType(int i);
+	
+	
+	/**
+	 * add an element to the DB
+	 */
+	public abstract void ajouter_Elt_BdD(ArrayList<String> list);
+	
+	/**
+	 * modifies the element with the ID id in the DB
+	 * @param id
+	 */
+	public abstract void modifier_Elt_BdD(int id, ArrayList<String> list);
+
+	/**
+	 * removes the element with the ID id from the DB
+	 * @param id
+	 */
+	public abstract void supprimer_Elt_BdD(int id);
 }
