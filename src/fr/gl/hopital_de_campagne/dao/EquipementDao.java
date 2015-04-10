@@ -13,7 +13,7 @@ public class EquipementDao {
 	@Id
 	@GeneratedValue
 	private int idEquipement;
-	
+
 	private int equipementLength;
 	private int equipementWidth;
 	private int equipementHeight;
@@ -103,5 +103,26 @@ public class EquipementDao {
 	public void setEquipementValue(int equipementValue) {
 		this.equipementValue = equipementValue;
 	}
-	
+
+	public EquipementDao() {
+
+	}
+
+	public EquipementDao(int idEquipement, int equipementLength,
+			int equipementWidth, int equipementHeight, String equipementNom,
+			String equipementDescription, int equipementWeight,
+			String equipementType, String equipementNatureColis,
+			int equipementValue) {
+		setIdEquipement(idEquipement);
+		setEquipementLength(equipementLength);
+		setEquipementWidth(equipementWidth);
+		setEquipementHeight(equipementHeight);
+		setEquipementNom(equipementNom);
+		setEquipementDescription(equipementDescription);
+		setEquipementWeight(equipementWeight);
+		setEquipementType(equipementType);
+		setEquipementNatureColis(equipementNatureColis);
+		setEquipementValue(equipementValue);
+	}
+
 }
