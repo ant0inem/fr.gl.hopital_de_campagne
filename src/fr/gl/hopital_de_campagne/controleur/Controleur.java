@@ -1,33 +1,52 @@
 package fr.gl.hopital_de_campagne.controleur;
 
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
 import fr.gl.hopital_de_campagne.gui.DisplayableClass;
 import fr.gl.hopital_de_campagne.gui.MenuGUI;
 import fr.gl.hopital_de_campagne.gui.VueGestionBdD;
+import fr.gl.hopital_de_campagne.metier.*;
+
 
 
 public class Controleur implements ActionListener, KeyListener, PropertyChangeListener{
 	
 	private JFrame mainWindow;
+	private DisplayableClass dc;
+	private static Controleur instance = null;
 
-	public Controleur() {
-		
+	public static Controleur getInstance() {
+		if (instance == null){
+			instance = new Controleur();
+		}
+		return instance;
+	}
+	
+	private Controleur() {
+		initialiserWindow();
+	}
+	
+	public void initialiserWindow(){
 		mainWindow = new JFrame();
 		mainWindow.setSize(800, 600);
 		mainWindow.setVisible(true);
+		mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		mainWindow.setJMenuBar((new MenuGUI(this)).getMenuBar());
 	}
 	
 	public void displayContent(DisplayableClass o) {
 		mainWindow.setContentPane(new VueGestionBdD(o, this));
+		mainWindow.revalidate();
 	}
 
 	@Override
@@ -62,6 +81,8 @@ public class Controleur implements ActionListener, KeyListener, PropertyChangeLi
 		switch(action){
 		
 		case "ajouter_Elt_BdD" :
+			ArrayList<String> list = new ArrayList<String>();
+			dc.ajouter_Elt_BdD(list);
 			break;
 			
 		case "modifier_Elt_BdD" :
@@ -71,21 +92,23 @@ public class Controleur implements ActionListener, KeyListener, PropertyChangeLi
 			break;
 			
 		case "viewContainer" :
-			/*
-			 * shows the containers in the table (1 ligne for each container)
-			 */
+			dc = DC_Container.getInstance();
+			this.displayContent(dc);
 			break;
 			
 		case "viewMed" :
-			/*
-			 * shows only the meds in the table 
-			 */
+			dc = DC_Medicament.getInstance();
+			this.displayContent(dc);
 			break;
 			
 		case "viewObject" :
-			/*
-			 * shows all objects in the table
-			 */
+			dc = DC_Equipement.getInstance();
+			this.displayContent(dc);
+			break;
+			
+		case "KFC" :
+			dc = DC_KFC.getInstance();
+			this.displayContent(dc);
 			break;
 		}
 		
