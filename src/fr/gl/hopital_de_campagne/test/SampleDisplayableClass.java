@@ -1,5 +1,7 @@
 package fr.gl.hopital_de_campagne.test;
 
+import java.util.ArrayList;
+
 import fr.gl.hopital_de_campagne.gui.DisplayableClass;
 
 public class SampleDisplayableClass implements DisplayableClass {
@@ -25,12 +27,30 @@ public class SampleDisplayableClass implements DisplayableClass {
 	@Override
 	public int getAttributType(int i) {
 		// TODO Auto-generated method stub
-		return 0;
+		return 2;
 	}
 
 	@Override
 	public int getNbElement() {
 		return 2;
+	}
+
+	@Override
+	public void ajouter_Elt_BdD(ArrayList<String> list) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void modifier_Elt_BdD(int id, ArrayList<String> list) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void supprimer_Elt_BdD(int id) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

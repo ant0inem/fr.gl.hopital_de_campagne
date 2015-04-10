@@ -1,7 +1,11 @@
 package fr.gl.hopital_de_campagne.test;
 
+import java.util.ArrayList;
+
 import fr.gl.hopital_de_campagne.controleur.Controleur;
 import fr.gl.hopital_de_campagne.gui.DisplayableClass;
+import fr.gl.hopital_de_campagne.metier.*;
+import fr.gl.hopital_de_campagne.dao.*;
 
 public class GuiUnderTest {
 
@@ -10,7 +14,17 @@ public class GuiUnderTest {
 //		VueGestionBdD vue = new VueGestionBdD();
 //		
 //		
-		DisplayableClass content = new SampleDisplayableClass();
+//		DisplayableClass content = new SampleDisplayableClass();
+		
+		EquipementDao eq1 = new EquipementDao(1, 5, 4, 2, "eq1", "test",
+				 42, "type", "tout", 0);
+		EquipementDao eq2 = new EquipementDao(2, 5, 4, 2, "eq2", "test",
+				 42, "type", "tout", 0);
+		ArrayList<EquipementDao> aL_eq = new ArrayList<EquipementDao>();
+		aL_eq.add(eq1);
+		aL_eq.add(eq2);
+		
+		DisplayableClass content = DC_Equipement.getInstance(aL_eq);
 //		Table table = new MyTable(content);
 //		
 //		JPanel pane = new JPanel();
@@ -24,7 +38,7 @@ public class GuiUnderTest {
 //		w.setSize(800, 600);
 //		w.setVisible(true);
 		
-		Controleur c = new Controleur();
+		Controleur c = Controleur.getInstance();
 		c.displayContent(content);
 	}
 
