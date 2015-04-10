@@ -13,7 +13,7 @@ public class MyTable extends  Table {
 	
 	public MyTable(DisplayableClass o) {
 		super(o);
-		String[] columnNames = new String[o.getNbAttribut()];
+		/*String[] columnNames = new String[o.getNbAttribut()];
 		for(int i = 0; i<o.getNbAttribut(); i++) columnNames[i] = o.getAttributName(i);
 		Object[][] data = new Object[o.getNbElement()][o.getNbAttribut()];
 		for(int i = 0; i<o.getNbElement(); i++){
@@ -22,6 +22,9 @@ public class MyTable extends  Table {
 			}
 		}
 		jTable = new JTable(new MyTableModel(data, columnNames));
+		*/
+		jTable = new JTable(new MyTableModel2(o));
+
 	}
 
 
