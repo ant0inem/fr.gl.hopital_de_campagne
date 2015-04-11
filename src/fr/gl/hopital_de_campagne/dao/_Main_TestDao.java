@@ -90,7 +90,7 @@ public class _Main_TestDao {
 			
 			Query tq = ms.createNativeQuery("select * from MedicamentDao", fr.gl.hopital_de_campagne.dao.MedicamentDao.class);
 			List result = tq.getResultList();
-			MedicamentDao medt = (MedicamentDao) result.get(0);
+			MedicamentDao medt = (MedicamentDao) result.get(1);
 			
 			TypedQuery<MedicamentDao> mt = ms.createQuery("select m from MedicamentDao m", fr.gl.hopital_de_campagne.dao.MedicamentDao.class);
 			List<MedicamentDao> mmt = mt.getResultList();
