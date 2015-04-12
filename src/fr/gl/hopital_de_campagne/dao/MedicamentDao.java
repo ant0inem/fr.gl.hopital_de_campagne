@@ -107,15 +107,15 @@ public class MedicamentDao {
 			String medicamentDosage, String medicamentDLU,
 			String medicamentDotationU7, String medicamentLot,
 			EquipementDao equipement) {
-		this.idMedicament = idMedicament;
-		this.medicamentFamille = medicamentFamille;
-		this.medicamentDCI = medicamentDCI;
-		this.medicamentQuantitéParBoite = medicamentQuantitéParBoite;
-		this.medicamentDosage = medicamentDosage;
-		this.medicamentDLU = medicamentDLU;
-		this.medicamentDotationU7 = medicamentDotationU7;
-		this.medicamentLot = medicamentLot;
-		this.equipement = equipement;
+		setIdMedicament(idMedicament);
+		setMedicamentFamille(medicamentFamille);
+		setMedicamentDCI(medicamentDCI);
+		setMedicamentQuantitéParBoite(medicamentQuantitéParBoite);
+		setMedicamentDosage(medicamentDosage);
+		setMedicamentDLU(medicamentDLU);
+		setMedicamentDotationU7(medicamentDotationU7);
+		setMedicamentLot(medicamentLot);
+		setEquipement(equipement);
 	}
 
 }

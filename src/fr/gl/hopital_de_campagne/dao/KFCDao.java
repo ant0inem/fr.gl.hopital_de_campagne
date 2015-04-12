@@ -40,10 +40,12 @@ public class KFCDao {
 		
 	}
 	
-	public KFCDao(int idKFC, String kfcProduit, int kfcPrix){
+	public KFCDao(int idKFC, String kfcProduit, int kfcPrix) {
 		setIdKFC(idKFC);
 		setKfcProduit(kfcProduit);
 		setKfcPrix(kfcPrix);
 	}
+	
+
 	
 }

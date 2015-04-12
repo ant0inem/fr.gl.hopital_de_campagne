@@ -151,20 +151,20 @@ public class ContainerDao {
 			String containerDesignationGenerique, String containerObservation,
 			String containerModule, String containerPriority,
 			List<SecteurDao> secteurs) {
-		this.idContainer = idContainer;
-		this.containerNumber = containerNumber;
-		this.containerLength = containerLength;
-		this.containerWidth = containerWidth;
-		this.containerHeight = containerHeight;
-		this.containerVolumeMax = containerVolumeMax;
-		this.containerVolumeUsed = containerVolumeUsed;
-		this.containerWeightMax = containerWeightMax;
-		this.containerWeightUsed = containerWeightUsed;
-		this.containerDesignationGenerique = containerDesignationGenerique;
-		this.containerObservation = containerObservation;
-		this.containerModule = containerModule;
-		this.containerPriority = containerPriority;
-		this.secteurs = secteurs;
+		setIdContainer(idContainer);
+		setContainerNumber(containerNumber);
+		setContainerLength(containerLength);
+		setContainerWidth(containerWidth);
+		setContainerHeight(containerHeight);
+		setContainerVolumeMax(containerVolumeMax);
+		setContainerVolumeUsed(containerVolumeUsed);
+		setContainerWeightMax(containerWeightMax);
+		setContainerWeightUsed(containerWeightUsed);
+		setContainerDesignationGenerique(containerDesignationGenerique);
+		setContainerObservation(containerObservation);
+		setContainerModule(containerModule);
+		setContainerPriority(containerPriority);
+		setSecteurs(secteurs);
 	}
 	
 	

@@ -97,14 +97,14 @@ public class ConfigurationDao {
 	public ConfigurationDao(int idConfiguration, String avionName,
 			String destination, String dateDepart, String dateRetour,
 			String typeMission, ContainerDao container, AvionDao avion) {
-		this.idConfiguration = idConfiguration;
-		this.avionName = avionName;
-		this.destination = destination;
-		this.dateDepart = dateDepart;
-		this.dateRetour = dateRetour;
-		this.typeMission = typeMission;
-		this.container = container;
-		this.avion = avion;
+		setIdConfiguration(idConfiguration);
+		setAvionName(avionName);
+		setDestination(destination);
+		setDateDepart(dateDepart);
+		setDateRetour(dateRetour);
+		setTypeMission(typeMission);
+		setContainer(container);
+		setAvion(avion);
 	}
 	
 	

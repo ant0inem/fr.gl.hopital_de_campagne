@@ -47,9 +47,9 @@ public class Container_containsDao {
 	
 	public Container_containsDao(int idContainer_contains, int quantité,
 			ContainerDao container) {
-		this.idContainer_contains = idContainer_contains;
-		this.quantité = quantité;
-		this.container = container;
+		setIdContainer_contains(idContainer_contains);
+		setQuantité(quantité);
+		setContainer(container);
 	}
 	
 /*	@OneToMany

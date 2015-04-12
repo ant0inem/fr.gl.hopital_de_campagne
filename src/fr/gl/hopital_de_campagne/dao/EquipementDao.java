@@ -113,16 +113,16 @@ public class EquipementDao {
 			String equipementDescription, int equipementWeight,
 			String equipementType, String equipementNatureColis,
 			int equipementValue) {
-		this.idEquipement = idEquipement;
-		this.equipementLength = equipementLength;
-		this.equipementWidth = equipementWidth;
-		this.equipementHeight = equipementHeight;
-		this.equipementNom = equipementNom;
-		this.equipementDescription = equipementDescription;
-		this.equipementWeight = equipementWeight;
-		this.equipementType = equipementType;
-		this.equipementNatureColis = equipementNatureColis;
-		this.equipementValue = equipementValue;
+		setIdEquipement(idEquipement);
+		setEquipementLength(equipementLength);
+		setEquipementWidth(equipementWidth);
+		setEquipementHeight(equipementHeight);
+		setEquipementNom(equipementNom);
+		setEquipementDescription(equipementDescription);
+		setEquipementWeight(equipementWeight);
+		setEquipementType(equipementType);
+		setEquipementNatureColis(equipementNatureColis);
+		setEquipementValue(equipementValue);
 	}
 	
 	

@@ -43,9 +43,9 @@ public class SecteurDao {
 	}
 	
 	public SecteurDao(int idSecteur, String secteurName, String secteurLieu) {
-		this.idSecteur = idSecteur;
-		this.secteurName = secteurName;
-		this.secteurLieu = secteurLieu;
+		setIdSecteur(idSecteur);
+		setSecteurName(secteurName);
+		setSecteurLieu(secteurLieu);
 	}
 
 	
