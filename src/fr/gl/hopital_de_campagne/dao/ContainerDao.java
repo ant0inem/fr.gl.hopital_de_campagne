@@ -140,6 +140,32 @@ public class ContainerDao {
 	public List<SecteurDao> getSecteurs() {
 		return secteurs;
 	}
+
+	public ContainerDao() {
+
+	}
+	public ContainerDao(int idContainer, int containerNumber,
+			int containerLength, int containerWidth, int containerHeight,
+			int containerVolumeMax, int containerVolumeUsed,
+			int containerWeightMax, int containerWeightUsed,
+			String containerDesignationGenerique, String containerObservation,
+			String containerModule, String containerPriority,
+			List<SecteurDao> secteurs) {
+		this.idContainer = idContainer;
+		this.containerNumber = containerNumber;
+		this.containerLength = containerLength;
+		this.containerWidth = containerWidth;
+		this.containerHeight = containerHeight;
+		this.containerVolumeMax = containerVolumeMax;
+		this.containerVolumeUsed = containerVolumeUsed;
+		this.containerWeightMax = containerWeightMax;
+		this.containerWeightUsed = containerWeightUsed;
+		this.containerDesignationGenerique = containerDesignationGenerique;
+		this.containerObservation = containerObservation;
+		this.containerModule = containerModule;
+		this.containerPriority = containerPriority;
+		this.secteurs = secteurs;
+	}
 	
 	
 }

@@ -40,6 +40,17 @@ public class Container_containsDao {
 	public ContainerDao getContainer() {
 		return container;
 	}
+
+	public Container_containsDao() {
+		
+	}
+	
+	public Container_containsDao(int idContainer_contains, int quantité,
+			ContainerDao container) {
+		this.idContainer_contains = idContainer_contains;
+		this.quantité = quantité;
+		this.container = container;
+	}
 	
 /*	@OneToMany
 	@JoinColumn(name = "idEquipement")
@@ -52,5 +63,7 @@ public class Container_containsDao {
 	public List<EquipementDao> getEquipements() {
 		return equipements;
 	}*/
+	
+	
 	
 }

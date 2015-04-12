@@ -89,5 +89,24 @@ public class ConfigurationDao {
 	public void setTypeMission(String typeMission) {
 		this.typeMission = typeMission;
 	}
+
+	public ConfigurationDao() {
+
+	}
+	
+	public ConfigurationDao(int idConfiguration, String avionName,
+			String destination, String dateDepart, String dateRetour,
+			String typeMission, ContainerDao container, AvionDao avion) {
+		this.idConfiguration = idConfiguration;
+		this.avionName = avionName;
+		this.destination = destination;
+		this.dateDepart = dateDepart;
+		this.dateRetour = dateRetour;
+		this.typeMission = typeMission;
+		this.container = container;
+		this.avion = avion;
+	}
+	
+	
 	
 }

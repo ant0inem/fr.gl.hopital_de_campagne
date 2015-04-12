@@ -74,4 +74,25 @@ public class AvionDao {
 	public void setUsableVolume(int usableVolume) {
 		this.usableVolume = usableVolume;
 	}
+	
+	public AvionDao() {
+
+	}
+	
+	public AvionDao(int idAvion, String typeAvion, int maxLoad,
+			int doorSizeWidth, int doorSizeHeight, int cargoHoldLength,
+			int cargoHoldWidth, int cargoHoldHeight, int usableVolume) {
+		this.idAvion = idAvion;
+		this.typeAvion = typeAvion;
+		this.maxLoad = maxLoad;
+		this.doorSizeWidth = doorSizeWidth;
+		this.doorSizeHeight = doorSizeHeight;
+		this.cargoHoldLength = cargoHoldLength;
+		this.cargoHoldWidth = cargoHoldWidth;
+		this.cargoHoldHeight = cargoHoldHeight;
+		this.usableVolume = usableVolume;
+	}
+	
+	
+	
 }
