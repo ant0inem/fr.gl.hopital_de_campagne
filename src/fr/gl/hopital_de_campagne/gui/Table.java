@@ -29,5 +29,11 @@ public abstract class Table {
 	 * @return the list of object which represent the specify row
 	 */
 	public abstract List<Object> getValuesOfRow(int rowIndex);
+	
+	/**
+	 * 
+	 * @param rowIndex index of a row
+	 */
+	public abstract void setSelectedRow(int rowIndex);
 
 }

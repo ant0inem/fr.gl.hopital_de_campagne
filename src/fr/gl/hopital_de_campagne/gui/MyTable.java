@@ -62,4 +62,11 @@ public class MyTable extends  Table {
 		return listOfObject;
 	}
 
+
+	@Override
+	public void setSelectedRow(int rowIndex) {
+		jTable.setRowSelectionInterval(rowIndex, rowIndex);
+		
+	}
+
 }
