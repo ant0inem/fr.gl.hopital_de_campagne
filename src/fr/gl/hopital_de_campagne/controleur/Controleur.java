@@ -10,19 +10,27 @@ import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
+import javax.swing.JTable;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import fr.gl.hopital_de_campagne.gui.DisplayableClass;
 import fr.gl.hopital_de_campagne.gui.MenuGUI;
+import fr.gl.hopital_de_campagne.gui.Table;
 import fr.gl.hopital_de_campagne.gui.VueGestionBdD;
 import fr.gl.hopital_de_campagne.metier.*;
 
 
 
-public class Controleur implements ActionListener, KeyListener, PropertyChangeListener{
+public class Controleur implements ActionListener, KeyListener, PropertyChangeListener, ListSelectionListener{
 	
 	private JFrame mainWindow;
 	private DisplayableClass dc;
 	private static Controleur instance = null;
+	private int vueActive = -1;
+	public static int VUE_ERREUR = -1;
+	public static int VUE_GESTION_BDD = 1;
+	private VueGestionBdD vueGestionBdD;
 
 	public static Controleur getInstance() {
 		if (instance == null){
@@ -45,8 +53,10 @@ public class Controleur implements ActionListener, KeyListener, PropertyChangeLi
 	}
 	
 	public void displayContent(DisplayableClass o) {
-		mainWindow.setContentPane(new VueGestionBdD(o, this));
+		vueGestionBdD = new VueGestionBdD(o, this);
+		mainWindow.setContentPane(vueGestionBdD);
 		mainWindow.revalidate();
+		vueActive = this.VUE_GESTION_BDD;
 	}
 
 	@Override
@@ -110,6 +120,18 @@ public class Controleur implements ActionListener, KeyListener, PropertyChangeLi
 			dc = DC_KFC.getInstance();
 			this.displayContent(dc);
 			break;
+		}
+		
+	}
+
+	@Override
+	public void valueChanged(ListSelectionEvent e) {
+		
+		if(vueActive == this.VUE_GESTION_BDD) {
+
+			int rowIndex = vueGestionBdD.getSelectedRow();
+			vueGestionBdD.setCurrentModifyFields(vueGestionBdD.getValuesOfRow(rowIndex));
+
 		}
 		
 	}	

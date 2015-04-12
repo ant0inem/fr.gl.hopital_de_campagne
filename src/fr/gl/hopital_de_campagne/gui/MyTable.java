@@ -1,17 +1,22 @@
 package fr.gl.hopital_de_campagne.gui;
 
 import java.awt.BorderLayout;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.TableModel;
 
 @SuppressWarnings("serial")
 public class MyTable extends  Table {
 	
 	private JTable jTable;
+	private TableModel tableModel;
 	
-	public MyTable(DisplayableClass o) {
+	public MyTable(DisplayableClass o, ListSelectionListener l) {
 		super(o);
 		/*String[] columnNames = new String[o.getNbAttribut()];
 		for(int i = 0; i<o.getNbAttribut(); i++) columnNames[i] = o.getAttributName(i);
@@ -23,7 +28,9 @@ public class MyTable extends  Table {
 		}
 		jTable = new JTable(new MyTableModel(data, columnNames));
 		*/
-		jTable = new JTable(new MyTableModel2(o));
+		tableModel = new MyTableModel2(o);
+		jTable = new JTable(tableModel);
+		jTable.getSelectionModel().addListSelectionListener(l);
 
 	}
 
@@ -37,6 +44,22 @@ public class MyTable extends  Table {
 		jTable.setColumnSelectionAllowed(false);
 		p.add(s, BorderLayout.CENTER);
 		return p;
+	}
+
+
+	@Override
+	public int getIndexOfSelectedRow() {
+		return jTable.getSelectedRow();
+	}
+
+
+	@Override
+	public List<Object> getValuesOfRow(int rowIndex) {
+		List<Object> listOfObject = new ArrayList<Object>();
+		for(int i=0; i<tableModel.getColumnCount(); i++) {
+			listOfObject.add(tableModel.getValueAt(rowIndex, i));
+		}
+		return listOfObject;
 	}
 
 }

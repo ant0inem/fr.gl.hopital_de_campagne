@@ -5,9 +5,13 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JTabbedPane;
+import javax.swing.event.ListSelectionListener;
+
+import fr.gl.hopital_de_campagne.controleur.Controleur;
 
 /**
  * La vue gestion base de donnees permet aux utilisateurs de voir la base 
@@ -21,11 +25,12 @@ public class VueGestionBdD extends JPanel {
 	private JTabbedPane tabbedPane;
 	private PaneAddElement pane1;
 	private PaneModifyElement pane2;
+	private Table table;
 
 	/**
 	 * Create the panel.
 	 */
-	public VueGestionBdD() {
+	private VueGestionBdD() {
 		setLayout(new BorderLayout(0, 0));
 		
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
@@ -47,7 +52,7 @@ public class VueGestionBdD extends JPanel {
 	 * @param o set of element to display
 	 * @param l controller in charge of the gui
 	 */
-	public VueGestionBdD(DisplayableClass o, ActionListener l) {
+	public VueGestionBdD(DisplayableClass o, Controleur l) {
 		this();
 		this.setDisplayableClass(o, l);
 	}
@@ -57,8 +62,8 @@ public class VueGestionBdD extends JPanel {
 	 * @param o set of element to display
 	 * @param l controller in charge of the gui
 	 */
-	public void setDisplayableClass(DisplayableClass o, ActionListener l) {
-		Table table = new MyTable(o);
+	public void setDisplayableClass(DisplayableClass o, Controleur l) {
+		table = new MyTable(o, (ListSelectionListener) l);
 		add(table.getTable(), BorderLayout.CENTER);
 		
 		pane1 = new PaneAddElement(o, l);
@@ -88,8 +93,25 @@ public class VueGestionBdD extends JPanel {
 	 * Modify the field in the PaneModifyElement
 	 * @param fields the set of String to write in the PaneModifyElement
 	 */
-	public void setCurrentModifyFields(List<String> fields) {
+	public void setCurrentModifyFields(List<Object> fields) {
 		pane2.setFields(fields);
+	}
+	
+	/**
+	 * 
+	 * @return index of the current selected row in the table
+	 */
+	public int getSelectedRow() {
+		return table.getIndexOfSelectedRow();
+	}
+	
+	/**
+	 * 
+	 * @param rowIndex index of a row
+	 * @return the list of object which represent the specify row
+	 */
+	public List<Object> getValuesOfRow(int rowIndex) {
+		return table.getValuesOfRow(rowIndex);
 	}
 
 }
