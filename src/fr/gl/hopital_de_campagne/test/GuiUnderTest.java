@@ -31,9 +31,9 @@ public class GuiUnderTest {
 //		
 //		DisplayableClass content = new SampleDisplayableClass();
 		
-		EquipementDao eq1 = new EquipementDao(1, 5, 4, 2, "eq1", "test",
+		EquipementDao eq1 = new EquipementDao(5, 4, 2, "eq1", "test",
 				 42, "type", "tout", 0);
-		EquipementDao eq2 = new EquipementDao(2, 5, 4, 2, "eq2", "test",
+		EquipementDao eq2 = new EquipementDao(5, 4, 2, "eq2", "test",
 				 42, "type", "tout", 0);
 		ArrayList<EquipementDao> aL_eq = new ArrayList<EquipementDao>();
 		aL_eq.add(eq1);

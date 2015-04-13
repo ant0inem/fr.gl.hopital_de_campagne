@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class Container_containsDao {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int idContainer_contains;
 	
 	private int quantité;
@@ -45,9 +45,8 @@ public class Container_containsDao {
 		
 	}
 	
-	public Container_containsDao(int idContainer_contains, int quantité,
+	public Container_containsDao(int quantité,
 			ContainerDao container) {
-		setIdContainer_contains(idContainer_contains);
 		setQuantité(quantité);
 		setContainer(container);
 	}

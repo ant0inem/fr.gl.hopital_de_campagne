@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Entity
 public class AvionDao {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int idAvion;
 	
 	private String typeAvion;
@@ -79,10 +79,9 @@ public class AvionDao {
 
 	}
 	
-	public AvionDao(int idAvion, String typeAvion, int maxLoad,
+	public AvionDao(String typeAvion, int maxLoad,
 			int doorSizeWidth, int doorSizeHeight, int cargoHoldLength,
 			int cargoHoldWidth, int cargoHoldHeight, int usableVolume) {
-		setIdAvion(idAvion);
 		setTypeAvion(typeAvion);
 		setMaxLoad(maxLoad);
 		setDoorSizeWidth(doorSizeWidth);

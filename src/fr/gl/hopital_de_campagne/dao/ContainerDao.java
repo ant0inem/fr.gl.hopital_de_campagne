@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Entity
 public class ContainerDao {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int idContainer;
 	
 	private int containerNumber;
@@ -144,14 +144,13 @@ public class ContainerDao {
 	public ContainerDao() {
 
 	}
-	public ContainerDao(int idContainer, int containerNumber,
+	public ContainerDao(int containerNumber,
 			int containerLength, int containerWidth, int containerHeight,
 			int containerVolumeMax, int containerVolumeUsed,
 			int containerWeightMax, int containerWeightUsed,
 			String containerDesignationGenerique, String containerObservation,
 			String containerModule, String containerPriority,
 			List<SecteurDao> secteurs) {
-		setIdContainer(idContainer);
 		setContainerNumber(containerNumber);
 		setContainerLength(containerLength);
 		setContainerWidth(containerWidth);

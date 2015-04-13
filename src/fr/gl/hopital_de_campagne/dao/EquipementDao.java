@@ -2,16 +2,13 @@ package fr.gl.hopital_de_campagne.dao;
 
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+
 
 @Entity
 public class EquipementDao {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int idEquipement;
 
 	private int equipementLength;
@@ -108,12 +105,12 @@ public class EquipementDao {
 
 	}
 
-	public EquipementDao(int idEquipement, int equipementLength,
+	public EquipementDao(int equipementLength,
 			int equipementWidth, int equipementHeight, String equipementNom,
 			String equipementDescription, int equipementWeight,
 			String equipementType, String equipementNatureColis,
 			int equipementValue) {
-		setIdEquipement(idEquipement);
+
 		setEquipementLength(equipementLength);
 		setEquipementWidth(equipementWidth);
 		setEquipementHeight(equipementHeight);

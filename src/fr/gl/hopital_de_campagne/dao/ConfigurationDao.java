@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class ConfigurationDao {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int idConfiguration;
 	
 	private String avionName;
@@ -94,10 +94,9 @@ public class ConfigurationDao {
 
 	}
 	
-	public ConfigurationDao(int idConfiguration, String avionName,
+	public ConfigurationDao(String avionName,
 			String destination, String dateDepart, String dateRetour,
 			String typeMission, ContainerDao container, AvionDao avion) {
-		setIdConfiguration(idConfiguration);
 		setAvionName(avionName);
 		setDestination(destination);
 		setDateDepart(dateDepart);

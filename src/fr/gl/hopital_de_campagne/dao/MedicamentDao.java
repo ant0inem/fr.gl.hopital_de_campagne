@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class MedicamentDao {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int idMedicament;
 
 	private String medicamentFamille;
@@ -102,12 +102,11 @@ public class MedicamentDao {
 
 	}
 	
-	public MedicamentDao(int idMedicament, String medicamentFamille,
+	public MedicamentDao(String medicamentFamille,
 			String medicamentDCI, int medicamentQuantitéParBoite,
 			String medicamentDosage, String medicamentDLU,
 			String medicamentDotationU7, String medicamentLot,
 			EquipementDao equipement) {
-		setIdMedicament(idMedicament);
 		setMedicamentFamille(medicamentFamille);
 		setMedicamentDCI(medicamentDCI);
 		setMedicamentQuantitéParBoite(medicamentQuantitéParBoite);

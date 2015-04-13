@@ -142,8 +142,8 @@ public class Dao {
 		EntityManager em = factory.createEntityManager();
 		Dao dao = new Dao(em);
 		// Ici, on peut appeler des méthodes du dessus.
-		SecteurDao secteur1 = new SecteurDao(1, "Zone 51", "USA");
-		dao.addSecteur(secteur1);
+		EquipementDao equipement = new EquipementDao(2,3,4,"EQUIPEEEEEMENT","Description",6,"Type","Nature",1000);
+		dao.addEquipement(equipement);
 		//
 		em.close();
 		factory.close();

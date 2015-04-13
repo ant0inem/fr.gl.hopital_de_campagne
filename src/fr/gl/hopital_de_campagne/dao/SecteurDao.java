@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Entity
 public class SecteurDao {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int idSecteur;
 	
 
@@ -42,8 +42,7 @@ public class SecteurDao {
 
 	}
 	
-	public SecteurDao(int idSecteur, String secteurName, String secteurLieu) {
-		setIdSecteur(idSecteur);
+	public SecteurDao(String secteurName, String secteurLieu) {
 		setSecteurName(secteurName);
 		setSecteurLieu(secteurLieu);
 	}
