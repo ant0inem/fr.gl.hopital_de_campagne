@@ -46,12 +46,13 @@ public class Container_containsDao {
 	}
 	
 	public Container_containsDao(int quantité,
-			ContainerDao container) {
+			ContainerDao container, List<EquipementDao> equipements) {
 		setQuantité(quantité);
-		setContainer(container);
+		setContainer(container);                    // Container_Secteur_idSecteur ne sert à rien, pas besoin de le rajouter
+		setEquipements(equipements);				// (contrairement à ce que le pdf indique).
 	}
 	
-/*	@OneToMany
+	@OneToMany
 	@JoinColumn(name = "idEquipement")
 	private List<EquipementDao> equipements;
 
@@ -61,7 +62,7 @@ public class Container_containsDao {
 
 	public List<EquipementDao> getEquipements() {
 		return equipements;
-	}*/
+	}
 	
 	
 	

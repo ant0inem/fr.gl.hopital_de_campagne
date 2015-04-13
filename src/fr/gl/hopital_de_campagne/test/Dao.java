@@ -1,8 +1,10 @@
 package fr.gl.hopital_de_campagne.test;
 // La classe KFCDao n'est ici pas prise en compte. #DésoléPeter
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.gl.hopital_de_campagne.dao.*;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -142,9 +144,28 @@ public class Dao {
 		EntityManager em = factory.createEntityManager();
 		Dao dao = new Dao(em);
 		// Ici, on peut appeler des méthodes du dessus.
+		SecteurDao secteur = new SecteurDao("Nom du secteur", "New-York");
+		dao.addSecteur(secteur);
+		ArrayList<SecteurDao> secteurs = new ArrayList<SecteurDao>();
+		secteurs.add(secteur);
+		
+		ContainerDao container = new ContainerDao(1,2,3,4,5,6,7,8,"Désignation", "Observation", "Module", "Priorité",secteurs);
+		dao.addContainer(container);
+		
+		
 		EquipementDao equipement = new EquipementDao(2,3,4,"EQUIPEEEEEMENT","Description",6,"Type","Nature",1000);
 		dao.addEquipement(equipement);
-		//
+		ArrayList<EquipementDao> equipements = new ArrayList<EquipementDao>();
+		equipements.add(equipement);
+		
+		Container_containsDao container_contains = new Container_containsDao(500,container,equipements);
+		dao.addContainer_contains(container_contains);
+		
+		MedicamentDao medicament = new MedicamentDao("Doliprane", "Test", 15, "1 par jour", "Test", "Teeest", "Lot 52",equipement);
+		dao.addMedicament(medicament);
+		
+		
+		// 
 		em.close();
 		factory.close();
 	}
