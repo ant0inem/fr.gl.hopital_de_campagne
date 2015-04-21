@@ -64,17 +64,28 @@ public class MenuGUI {
         */
         
 
-        JMenu menu3 = new JMenu("Menu FastFood");
-
-        JMenuItem KFC = new JMenuItem("KFC");
-        KFC.setActionCommand("KFC");
-        KFC.addActionListener(l);
-        menu3.add(KFC);
+//        JMenu menu3 = new JMenu("Menu FastFood");
+//
+//        JMenuItem KFC = new JMenuItem("KFC");
+//        KFC.setActionCommand("KFC");
+//        KFC.addActionListener(l);
+//        menu3.add(KFC);
         
+        
+        
+        
+        JMenu menu4 = new JMenu("Mission");
+
+        JMenuItem viewPreparePlane = new JMenuItem("Préparer un embarquement");
+        viewPreparePlane.setActionCommand("viewPreparePlane");
+        viewPreparePlane.addActionListener(l);
+        menu4.add(viewPreparePlane);
         
         menuBar.add(menu1);
         menuBar.add(menu2);
-        menuBar.add(menu3);
+//        menuBar.add(menu3);
+        menuBar.add(menu4);
+
 
     }
 

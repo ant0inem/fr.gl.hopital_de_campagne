@@ -13,7 +13,7 @@ import fr.gl.hopital_de_campagne.dao.*;
 public class GuiUnderTest {
 
 	public static void main(String[] args) {
-		test2();
+		test1();
 	}
 		
 	private static void test2() {

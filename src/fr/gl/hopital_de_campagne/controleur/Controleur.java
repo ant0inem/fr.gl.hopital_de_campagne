@@ -18,6 +18,7 @@ import fr.gl.hopital_de_campagne.gui.DisplayableClass;
 import fr.gl.hopital_de_campagne.gui.MenuGUI;
 import fr.gl.hopital_de_campagne.gui.Table;
 import fr.gl.hopital_de_campagne.gui.VueGestionBdD;
+import fr.gl.hopital_de_campagne.gui.VueGestionChargement;
 import fr.gl.hopital_de_campagne.metier.*;
 
 
@@ -30,7 +31,9 @@ public class Controleur implements ActionListener, KeyListener, PropertyChangeLi
 	private int vueActive = -1;
 	public static int VUE_ERREUR = -1;
 	public static int VUE_GESTION_BDD = 1;
+	public static int VUE_GESTION_CHARGEMENT = 2;
 	private VueGestionBdD vueGestionBdD;
+	private VueGestionChargement vueGestionChargement;
 
 	public static Controleur getInstance() {
 		if (instance == null){
@@ -57,6 +60,13 @@ public class Controleur implements ActionListener, KeyListener, PropertyChangeLi
 		mainWindow.setContentPane(vueGestionBdD);
 		mainWindow.revalidate();
 		vueActive = this.VUE_GESTION_BDD;
+	}
+	
+	public void displayPreparePlane() {
+		vueGestionChargement = new VueGestionChargement(this);
+		mainWindow.setContentPane(vueGestionChargement);
+		mainWindow.revalidate();
+		vueActive = this.VUE_GESTION_CHARGEMENT;
 	}
 
 	@Override
@@ -120,6 +130,11 @@ public class Controleur implements ActionListener, KeyListener, PropertyChangeLi
 			dc = DC_KFC.getInstance();
 			this.displayContent(dc);
 			break;
+			
+		case "viewPreparePlane" :
+			this.displayPreparePlane();
+			break;	
+			
 		}
 		
 	}
