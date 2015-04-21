@@ -1,23 +1,20 @@
 package fr.gl.hopital_de_campagne.dao;
-// avionName clé primaire ???
-// String dateDepart // dateRetour en Date
-import java.util.Date;
 
 import javax.persistence.*;
 
 @Entity
 public class ConfigurationDao {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idConfiguration;
-	
+
 	private String avionName;
 	private String destination;
 	private String dateDepart;
 	private String dateRetour;
 	private String typeMission;
-	
+
 	@OneToOne
 	@JoinColumn(name = "idContainer")
 	ContainerDao container;
@@ -29,7 +26,7 @@ public class ConfigurationDao {
 	public ContainerDao getContainer() {
 		return container;
 	}
-	
+
 	@OneToOne
 	@JoinColumn(name = "idAvion")
 	AvionDao avion;
@@ -93,10 +90,10 @@ public class ConfigurationDao {
 	public ConfigurationDao() {
 
 	}
-	
-	public ConfigurationDao(String avionName,
-			String destination, String dateDepart, String dateRetour,
-			String typeMission, ContainerDao container, AvionDao avion) {
+
+	public ConfigurationDao(String avionName, String destination,
+			String dateDepart, String dateRetour, String typeMission,
+			ContainerDao container, AvionDao avion) {
 		setAvionName(avionName);
 		setDestination(destination);
 		setDateDepart(dateDepart);
@@ -105,7 +102,5 @@ public class ConfigurationDao {
 		setContainer(container);
 		setAvion(avion);
 	}
-	
-	
-	
+
 }

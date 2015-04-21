@@ -1,15 +1,13 @@
 package fr.gl.hopital_de_campagne.dao;
 
-import java.util.List;
-
 import javax.persistence.*;
 
 @Entity
 public class ContainerDao {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idContainer;
-	
+
 	private int containerNumber;
 	private int containerLength;
 	private int containerWidth;
@@ -22,7 +20,7 @@ public class ContainerDao {
 	private String containerObservation;
 	private String containerModule;
 	private String containerPriority;
-		
+
 	public int getIdContainer() {
 		return idContainer;
 	}
@@ -30,8 +28,7 @@ public class ContainerDao {
 	public void setIdContainer(int idContainer) {
 		this.idContainer = idContainer;
 	}
-	
-	
+
 	public int getContainerNumber() {
 		return containerNumber;
 	}
@@ -129,28 +126,28 @@ public class ContainerDao {
 		this.containerPriority = containerPriority;
 	}
 
-	@OneToMany
-	@JoinColumn(name = "idSecteur")
-	private List<SecteurDao> secteurs;
+	@ManyToOne
+	// @JoinColumn(name = "SECTEURDAO_ID")
+	private SecteurDao secteur;
 
-	public void setSecteurs(List<SecteurDao> secteurs) {
-		this.secteurs = secteurs;
+	public void setSecteur(SecteurDao secteur) {
+		this.secteur = secteur;
 	}
 
-	public List<SecteurDao> getSecteurs() {
-		return secteurs;
+	public SecteurDao getSecteur() {
+		return secteur;
 	}
 
 	public ContainerDao() {
 
 	}
-	public ContainerDao(int containerNumber,
-			int containerLength, int containerWidth, int containerHeight,
-			int containerVolumeMax, int containerVolumeUsed,
-			int containerWeightMax, int containerWeightUsed,
-			String containerDesignationGenerique, String containerObservation,
-			String containerModule, String containerPriority,
-			List<SecteurDao> secteurs) {
+
+	public ContainerDao(int containerNumber, int containerLength,
+			int containerWidth, int containerHeight, int containerVolumeMax,
+			int containerVolumeUsed, int containerWeightMax,
+			int containerWeightUsed, String containerDesignationGenerique,
+			String containerObservation, String containerModule,
+			String containerPriority, SecteurDao secteur) {
 		setContainerNumber(containerNumber);
 		setContainerLength(containerLength);
 		setContainerWidth(containerWidth);
@@ -163,8 +160,7 @@ public class ContainerDao {
 		setContainerObservation(containerObservation);
 		setContainerModule(containerModule);
 		setContainerPriority(containerPriority);
-		setSecteurs(secteurs);
+		setSecteur(secteur);
 	}
-	
-	
+
 }

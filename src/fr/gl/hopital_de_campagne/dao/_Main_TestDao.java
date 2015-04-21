@@ -61,7 +61,7 @@ public class _Main_TestDao {
 			cfg.setAvion(a);
 			cfg.setContainer(c);
 			
-			c.setSecteurs(ss);
+//			c.setSecteur(s);
 			
 			cc.setContainer(c);
 			/*cc.setEquipements(es);*/

@@ -1,8 +1,4 @@
 package fr.gl.hopital_de_campagne.dao;
-// Remplacer String medicamentDLU par Date
-import java.util.Date;
-import java.util.List;
-import java.text.SimpleDateFormat;
 
 import javax.persistence.*;
 
@@ -10,7 +6,7 @@ import javax.persistence.*;
 public class MedicamentDao {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idMedicament;
 
 	private String medicamentFamille;
@@ -28,7 +24,7 @@ public class MedicamentDao {
 	public void setIdMedicament(int idMedicament) {
 		this.idMedicament = idMedicament;
 	}
-	
+
 	@ManyToOne
 	@JoinColumn(name = "idEquipement")
 	EquipementDao equipement;
@@ -40,7 +36,7 @@ public class MedicamentDao {
 	public EquipementDao getEquipement() {
 		return equipement;
 	}
-	
+
 	public String getMedicamentFamille() {
 		return medicamentFamille;
 	}
@@ -97,16 +93,14 @@ public class MedicamentDao {
 		this.medicamentLot = medicamentLot;
 	}
 
-	
 	public MedicamentDao() {
 
 	}
-	
-	public MedicamentDao(String medicamentFamille,
-			String medicamentDCI, int medicamentQuantitéParBoite,
-			String medicamentDosage, String medicamentDLU,
-			String medicamentDotationU7, String medicamentLot,
-			EquipementDao equipement) {
+
+	public MedicamentDao(String medicamentFamille, String medicamentDCI,
+			int medicamentQuantitéParBoite, String medicamentDosage,
+			String medicamentDLU, String medicamentDotationU7,
+			String medicamentLot, EquipementDao equipement) {
 		setMedicamentFamille(medicamentFamille);
 		setMedicamentDCI(medicamentDCI);
 		setMedicamentQuantitéParBoite(medicamentQuantitéParBoite);

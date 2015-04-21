@@ -149,7 +149,7 @@ public class Dao {
 		ArrayList<SecteurDao> secteurs = new ArrayList<SecteurDao>();
 		secteurs.add(secteur);
 		
-		ContainerDao container = new ContainerDao(1,2,3,4,5,6,7,8,"Désignation", "Observation", "Module", "Priorité",secteurs);
+		ContainerDao container = new ContainerDao(1,2,3,4,5,6,7,8,"Désignation", "Observation", "Module", "Priorité",secteur);
 		dao.addContainer(container);
 		
 		
@@ -158,14 +158,14 @@ public class Dao {
 		ArrayList<EquipementDao> equipements = new ArrayList<EquipementDao>();
 		equipements.add(equipement);
 		
-		Container_containsDao container_contains = new Container_containsDao(500,container,equipements);
+		Container_containsDao container_contains = new Container_containsDao(500,container,equipement);
 		dao.addContainer_contains(container_contains);
 		
 		MedicamentDao medicament = new MedicamentDao("Doliprane", "Test", 15, "1 par jour", "Test", "Teeest", "Lot 52",equipement);
 		dao.addMedicament(medicament);
 		
 		
-		// 
+		 
 		em.close();
 		factory.close();
 	}

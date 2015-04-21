@@ -1,18 +1,16 @@
 package fr.gl.hopital_de_campagne.dao;
 
-import java.util.List;
-
 import javax.persistence.*;
 
 @Entity
 public class Container_containsDao {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idContainer_contains;
-	
+
 	private int quantité;
-	
+
 	public int getQuantité() {
 		return quantité;
 	}
@@ -30,7 +28,6 @@ public class Container_containsDao {
 	}
 
 	@OneToOne
-	@JoinColumn(name = "idContainer")
 	ContainerDao container;
 
 	public void setContainer(ContainerDao c) {
@@ -42,28 +39,26 @@ public class Container_containsDao {
 	}
 
 	public Container_containsDao() {
-		
+
 	}
-	
-	public Container_containsDao(int quantité,
-			ContainerDao container, List<EquipementDao> equipements) {
+
+	public Container_containsDao(int quantité, ContainerDao container,
+			EquipementDao equipement) {
 		setQuantité(quantité);
-		setContainer(container);                    // Container_Secteur_idSecteur ne sert à rien, pas besoin de le rajouter
-		setEquipements(equipements);				// (contrairement à ce que le pdf indique).
-	}
-	
-	@OneToMany
-	@JoinColumn(name = "idEquipement")
-	private List<EquipementDao> equipements;
-
-	public void setEquipements(List<EquipementDao> equipements) {
-		this.equipements = equipements;
+		setContainer(container); // Container_Secteur_idSecteur ne sert à rien,
+									// pas besoin de le rajouter
+		setEquipement(equipement); // (contrairement à ce que le pdf indique).
 	}
 
-	public List<EquipementDao> getEquipements() {
-		return equipements;
+	@OneToOne
+	private EquipementDao equipement;
+
+	public void setEquipement(EquipementDao equipement) {
+		this.equipement = equipement;
 	}
-	
-	
-	
+
+	public EquipementDao getEquipement() {
+		return equipement;
+	}
+
 }
