@@ -14,6 +14,7 @@ import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import fr.gl.hopital_de_campagne.dao.Dao;
 import fr.gl.hopital_de_campagne.gui.DisplayableClass;
 import fr.gl.hopital_de_campagne.gui.MenuGUI;
 import fr.gl.hopital_de_campagne.gui.Table;
@@ -34,6 +35,7 @@ public class Controleur implements ActionListener, KeyListener, PropertyChangeLi
 	public static int VUE_GESTION_CHARGEMENT = 2;
 	private VueGestionBdD vueGestionBdD;
 	private VueGestionChargement vueGestionChargement;
+	private Dao dao;
 
 	public static Controleur getInstance() {
 		if (instance == null){
@@ -47,12 +49,14 @@ public class Controleur implements ActionListener, KeyListener, PropertyChangeLi
 	}
 	
 	public void initialiserWindow(){
-		mainWindow = new JFrame();
+		mainWindow = new JFrame("Hôpital de campagne");
 		mainWindow.setSize(800, 600);
 		mainWindow.setVisible(true);
 		mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		mainWindow.setJMenuBar((new MenuGUI(this)).getMenuBar());
+		
+		dao = new Dao();
 	}
 	
 	public void displayContent(DisplayableClass o) {
@@ -112,17 +116,17 @@ public class Controleur implements ActionListener, KeyListener, PropertyChangeLi
 			break;
 			
 		case "viewContainer" :
-			dc = DC_Container.getInstance();
+			dc = DC_Container.getInstance(dao.getAllContainerDao());
 			this.displayContent(dc);
 			break;
 			
 		case "viewMed" :
-			dc = DC_Medicament.getInstance();
+			dc = DC_Medicament.getInstance(dao.getAllMedicamentDao());
 			this.displayContent(dc);
 			break;
 			
 		case "viewObject" :
-			dc = DC_Equipement.getInstance();
+			dc = DC_Equipement.getInstance(dao.getAllEquipementDao());
 			this.displayContent(dc);
 			break;
 			

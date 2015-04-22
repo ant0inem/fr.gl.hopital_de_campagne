@@ -1,4 +1,4 @@
-package fr.gl.hopital_de_campagne.test;
+package fr.gl.hopital_de_campagne.dao;
 // La classe KFCDao n'est ici pas prise en compte. #DésoléPeter
 import java.util.ArrayList;
 import java.util.List;
@@ -12,42 +12,49 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 public class Dao {
-	public EntityManager em;
+
+	private EntityManagerFactory factory = Persistence.createEntityManagerFactory("Projet_GL");
+	private EntityManager em;
 	/**
 	 * 
 	 * @return the set of all the equipement saved in the data base
 	 */
-	public Dao(EntityManager em) {	
-		this.em = em;
+	public Dao() {	
+		em = factory.createEntityManager();
 	}
 		
 		// Getters. Retournent les listes d'objets.
-		public List<EquipementDao> getAllEquipementDao(EntityManager em) {
+		public List<EquipementDao> getAllEquipementDao() {
 			Query query = em.createNativeQuery("select * from EquipementDao", fr.gl.hopital_de_campagne.dao.EquipementDao.class);
 			return query.getResultList();
 		}
 		
-		public List<AvionDao> getAllAvionDao(EntityManager em) {
+		public List<AvionDao> getAllAvionDao() {
 			Query query = em.createNativeQuery("select * from AvionDao", fr.gl.hopital_de_campagne.dao.AvionDao.class);
 			return query.getResultList();
 		}
 		
-		public List<ConfigurationDao> getAllConfigurationDao(EntityManager em) {
+		public List<ConfigurationDao> getAllConfigurationDao() {
 			Query query = em.createNativeQuery("select * from ConfigurationDao", fr.gl.hopital_de_campagne.dao.ConfigurationDao.class);
 			return query.getResultList();
 		}
 
-		public List<Container_containsDao> getAllContainer_containsDao(EntityManager em) {
+		public List<ContainerDao> getAllContainerDao() {
+			Query query = em.createNativeQuery("select * from ContainerDao", fr.gl.hopital_de_campagne.dao.ContainerDao.class);
+			return query.getResultList();
+		}
+		
+		public List<Container_containsDao> getAllContainer_containsDao() {
 			Query query = em.createNativeQuery("select * from Container_containsDao", fr.gl.hopital_de_campagne.dao.Container_containsDao.class);
 			return query.getResultList();
 		}
 		
-		public List<MedicamentDao> getAllMedicamentDao(EntityManager em) {
+		public List<MedicamentDao> getAllMedicamentDao() {
 			Query query = em.createNativeQuery("select * from MedicamentDao", fr.gl.hopital_de_campagne.dao.MedicamentDao.class);
 			return query.getResultList();
 		}
 		
-		public List<SecteurDao> getAllSecteurDao(EntityManager em) {
+		public List<SecteurDao> getAllSecteurDao() {
 			Query query = em.createNativeQuery("select * from SecteurDao", fr.gl.hopital_de_campagne.dao.SecteurDao.class);
 			return query.getResultList();
 		}
@@ -140,9 +147,7 @@ public class Dao {
 		
 		
 	static public void main(String[] args) {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("Projet_GL");
-		EntityManager em = factory.createEntityManager();
-		Dao dao = new Dao(em);
+		Dao dao = new Dao();
 		// Ici, on peut appeler des méthodes du dessus.
 		SecteurDao secteur = new SecteurDao("Nom du secteur", "New-York");
 		dao.addSecteur(secteur);
@@ -166,8 +171,8 @@ public class Dao {
 		
 		
 		 
-		em.close();
-		factory.close();
+//		em.close();
+//		factory.close();
 	}
 	
 

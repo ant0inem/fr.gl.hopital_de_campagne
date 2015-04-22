@@ -13,7 +13,7 @@ import fr.gl.hopital_de_campagne.dao.*;
 public class GuiUnderTest {
 
 	public static void main(String[] args) {
-		test1();
+		test3();
 	}
 		
 	private static void test2() {
@@ -55,6 +55,10 @@ public class GuiUnderTest {
 		
 		Controleur c = Controleur.getInstance();
 		c.displayContent(content);
+	}
+	
+	public static void test3() {
+		Controleur c = Controleur.getInstance();
 	}
 
 }

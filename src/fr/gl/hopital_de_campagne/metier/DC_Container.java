@@ -1,22 +1,23 @@
 package fr.gl.hopital_de_campagne.metier;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import fr.gl.hopital_de_campagne.dao.ContainerDao;
 import fr.gl.hopital_de_campagne.gui.DisplayableClass;
 
 public class DC_Container implements DisplayableClass {
 
-	private String[] columnNames = { "idContainer", "containerNumber",
+	private String[] columnNames = { "ID", "containerNumber",
 			"containerLength", "containerWidth", "containerHeight",
 			"containerVolumeMax", "containerVolumeUsed", "containerWeightMax",
 			"containerWeightUsed", "containerDesignationGenerique",
 			"containerObservation", "containerModule", "containerPriority" };
-	private ArrayList<ContainerDao> cont_List = new ArrayList<ContainerDao>();
+	private List<ContainerDao> cont_List = new ArrayList<ContainerDao>();
 	private static DC_Container instance = null;
 
 	
-	public static DC_Container getInstance(ArrayList<ContainerDao> cont_List){
+	public static DC_Container getInstance(List<ContainerDao> cont_List){
 		if (instance == null){
 			instance = new DC_Container(cont_List);
 		}
@@ -30,15 +31,15 @@ public class DC_Container implements DisplayableClass {
 		return instance;
 	}
 	
-	private DC_Container(ArrayList<ContainerDao> cont_List) {
+	private DC_Container(List<ContainerDao> cont_List) {
 		setMed_List(cont_List);
 	}
 
-	public ArrayList<ContainerDao> getCont_List() {
+	public List<ContainerDao> getCont_List() {
 		return cont_List;
 	}
 
-	public void setMed_List(ArrayList<ContainerDao> cont_List) {
+	public void setMed_List(List<ContainerDao> cont_List) {
 		this.cont_List = cont_List;
 	}
 
@@ -143,13 +144,13 @@ public class DC_Container implements DisplayableClass {
 	}
 
 	@Override
-	public void ajouter_Elt_BdD(ArrayList<String> list) {
+	public void ajouter_Elt_BdD(List<String> list) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void modifier_Elt_BdD(int id, ArrayList<String> list) {
+	public void modifier_Elt_BdD(int id, List<String> list) {
 		// TODO Auto-generated method stub
 		
 	}

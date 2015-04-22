@@ -1,6 +1,7 @@
 package fr.gl.hopital_de_campagne.test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import fr.gl.hopital_de_campagne.gui.DisplayableClass;
 
@@ -36,13 +37,13 @@ public class SampleDisplayableClass implements DisplayableClass {
 	}
 
 	@Override
-	public void ajouter_Elt_BdD(ArrayList<String> list) {
+	public void ajouter_Elt_BdD(List<String> list) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void modifier_Elt_BdD(int id, ArrayList<String> list) {
+	public void modifier_Elt_BdD(int id, List<String> list) {
 		// TODO Auto-generated method stub
 		
 	}

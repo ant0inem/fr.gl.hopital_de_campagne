@@ -1,6 +1,7 @@
 package fr.gl.hopital_de_campagne.metier;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import fr.gl.hopital_de_campagne.dao.MedicamentDao;
 import fr.gl.hopital_de_campagne.gui.DisplayableClass;
@@ -10,11 +11,11 @@ public class DC_Medicament implements DisplayableClass {
 	private String[] columnNames = { "idMedicament", "medicamentFamille",
 			"medicamentDCI", "medicamentQuantitéParBoite", "medicamentDosage",
 			"medicamentDLU", "medicamentDotationU7", "medicamentLot" };
-	private ArrayList<MedicamentDao> med_List = new ArrayList<MedicamentDao>();
+	private List<MedicamentDao> med_List = new ArrayList<MedicamentDao>();
 	private static DC_Medicament instance = null;
 
 	
-	public static DC_Medicament getInstance(ArrayList<MedicamentDao> med_List){
+	public static DC_Medicament getInstance(List<MedicamentDao> med_List){
 		if (instance == null){
 			instance = new DC_Medicament(med_List);
 		}
@@ -28,15 +29,15 @@ public class DC_Medicament implements DisplayableClass {
 		return instance;
 	}
 	
-	private DC_Medicament(ArrayList<MedicamentDao> med_List) {
+	private DC_Medicament(List<MedicamentDao> med_List) {
 		setMed_List(med_List);
 	}
 
-	public ArrayList<MedicamentDao> getMed_List() {
+	public List<MedicamentDao> getMed_List() {
 		return med_List;
 	}
 
-	public void setMed_List(ArrayList<MedicamentDao> med_List) {
+	public void setMed_List(List<MedicamentDao> med_List) {
 		this.med_List = med_List;
 	}
 
@@ -121,13 +122,13 @@ public class DC_Medicament implements DisplayableClass {
 	}
 
 	@Override
-	public void ajouter_Elt_BdD(ArrayList<String> list) {
+	public void ajouter_Elt_BdD(List<String> list) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void modifier_Elt_BdD(int id, ArrayList<String> list) {
+	public void modifier_Elt_BdD(int id, List<String> list) {
 		// TODO Auto-generated method stub
 		
 	}

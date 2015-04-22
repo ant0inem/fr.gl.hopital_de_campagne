@@ -5,6 +5,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import fr.gl.hopital_de_campagne.dao.ContainerDao;
+import fr.gl.hopital_de_campagne.dao.Dao;
 import fr.gl.hopital_de_campagne.dao.EquipementDao;
 import fr.gl.hopital_de_campagne.dao.SecteurDao;
 
@@ -12,11 +13,7 @@ public class DaoUnderTest {
 
 	public static void main(String[] args) {
 		
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("Projet_GL");
-		
-		EntityManager em = factory.createEntityManager();
-		
-		Dao dao = new Dao(em);
+		Dao dao = new Dao();
 		
 //		SecteurDao secteur = new SecteurDao("Nom du secteur", "Paris");
 //		dao.addSecteur(secteur);
@@ -27,9 +24,6 @@ public class DaoUnderTest {
 		EquipementDao equipement = new EquipementDao(2,3,4,"EQUIPEEEEEMENT","Description",6,"Type","Nature",1000);
 		dao.addEquipement(equipement);
 
-		
-		em.close();
-		factory.close();
 
 
 	}

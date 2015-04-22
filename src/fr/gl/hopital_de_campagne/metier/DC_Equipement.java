@@ -1,6 +1,7 @@
 package fr.gl.hopital_de_campagne.metier;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import fr.gl.hopital_de_campagne.gui.DisplayableClass;
 import fr.gl.hopital_de_campagne.dao.EquipementDao;
@@ -11,11 +12,11 @@ public class DC_Equipement implements DisplayableClass {
 			"equipementWidth", "equipementHeight", "equipementNom",
 			"equipementDescription", "equipementWeight", "equipementType",
 			"equipementNatureColis", "equipementValue" };
-	private ArrayList<EquipementDao> eq_List = new ArrayList<EquipementDao>();
+	private List<EquipementDao> eq_List = new ArrayList<EquipementDao>();
 
 	private static DC_Equipement instance = null;
 
-	public static DC_Equipement getInstance(ArrayList<EquipementDao> eq_List) {
+	public static DC_Equipement getInstance(List<EquipementDao> eq_List) {
 		if (instance == null) {
 			instance = new DC_Equipement(eq_List);
 		}
@@ -29,7 +30,7 @@ public class DC_Equipement implements DisplayableClass {
 		return instance;
 	}
 
-	private DC_Equipement(ArrayList<EquipementDao> eq_List) {
+	private DC_Equipement(List<EquipementDao> eq_List) {
 		setEq_List(eq_List);
 	}
 
@@ -116,11 +117,11 @@ public class DC_Equipement implements DisplayableClass {
 		return type;
 	}
 
-	public ArrayList<EquipementDao> getEq_List() {
+	public List<EquipementDao> getEq_List() {
 		return eq_List;
 	}
 
-	public void setEq_List(ArrayList<EquipementDao> eq_List) {
+	public void setEq_List(List<EquipementDao> eq_List) {
 		this.eq_List = eq_List;
 	}
 
@@ -129,12 +130,12 @@ public class DC_Equipement implements DisplayableClass {
 	}
 
 	@Override
-	public void ajouter_Elt_BdD(ArrayList<String> list) {
+	public void ajouter_Elt_BdD(List<String> list) {
 		
 	}
 
 	@Override
-	public void modifier_Elt_BdD(int id, ArrayList<String> list) {
+	public void modifier_Elt_BdD(int id, List<String> list) {
 		// TODO Auto-generated method stub
 
 	}

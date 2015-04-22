@@ -1,7 +1,7 @@
 package fr.gl.hopital_de_campagne.gui;
 
 import java.lang.Object;
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Les instances de DisplayableClass peuvent etre afficher comme une ligne
@@ -52,13 +52,13 @@ public interface DisplayableClass {
 	/**
 	 * add an element to the DB
 	 */
-	public abstract void ajouter_Elt_BdD(ArrayList<String> list);
+	public abstract void ajouter_Elt_BdD(List<String> list);
 	
 	/**
 	 * modifies the element with the ID id in the DB
 	 * @param id
 	 */
-	public abstract void modifier_Elt_BdD(int id, ArrayList<String> list);
+	public abstract void modifier_Elt_BdD(int id, List<String> list);
 
 	/**
 	 * removes the element with the ID id from the DB
