@@ -7,11 +7,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JFrame;
-import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -19,7 +17,6 @@ import fr.gl.hopital_de_campagne.dao.Dao;
 import fr.gl.hopital_de_campagne.dao.SecteurDao;
 import fr.gl.hopital_de_campagne.gui.DisplayableClass;
 import fr.gl.hopital_de_campagne.gui.MenuGUI;
-import fr.gl.hopital_de_campagne.gui.Table;
 import fr.gl.hopital_de_campagne.gui.VueGestionBdD;
 import fr.gl.hopital_de_campagne.gui.VueGestionChargement;
 import fr.gl.hopital_de_campagne.metier.*;
@@ -64,14 +61,14 @@ public class Controleur implements ActionListener, KeyListener, PropertyChangeLi
 		vueGestionBdD = new VueGestionBdD(o, this);
 		mainWindow.setContentPane(vueGestionBdD);
 		mainWindow.revalidate();
-		vueActive = this.VUE_GESTION_BDD;
+		vueActive = Controleur.VUE_GESTION_BDD;
 	}
 	
 	public void displayPreparePlane() {
 		vueGestionChargement = new VueGestionChargement(this);
 		mainWindow.setContentPane(vueGestionChargement);
 		mainWindow.revalidate();
-		vueActive = this.VUE_GESTION_CHARGEMENT;
+		vueActive = Controleur.VUE_GESTION_CHARGEMENT;
 	}
 
 	@Override
@@ -106,8 +103,7 @@ public class Controleur implements ActionListener, KeyListener, PropertyChangeLi
 		switch(action){
 		
 		case "ajouter_Elt_BdD" :
-			ArrayList<String> list = new ArrayList<String>();
-			dc.ajouter_Elt_BdD(list, dao);
+			if(vueGestionBdD!=null) dc.ajouter_Elt_BdD(vueGestionBdD.getCurrentAddFields(), dao);;
 			break;
 			
 		case "modifier_Elt_BdD" :
@@ -147,7 +143,7 @@ public class Controleur implements ActionListener, KeyListener, PropertyChangeLi
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
 		
-		if(vueActive == this.VUE_GESTION_BDD) {
+		if(vueActive == Controleur.VUE_GESTION_BDD) {
 
 			int rowIndex = vueGestionBdD.getSelectedRow();
 			vueGestionBdD.setCurrentModifyFields(vueGestionBdD.getValuesOfRow(rowIndex));

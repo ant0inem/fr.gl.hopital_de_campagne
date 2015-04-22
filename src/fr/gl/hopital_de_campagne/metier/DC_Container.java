@@ -5,6 +5,7 @@ import java.util.List;
 
 import fr.gl.hopital_de_campagne.dao.ContainerDao;
 import fr.gl.hopital_de_campagne.dao.Dao;
+import fr.gl.hopital_de_campagne.dao.SecteurDao;
 import fr.gl.hopital_de_campagne.gui.DisplayableClass;
 
 public class DC_Container implements DisplayableClass {
@@ -153,14 +154,28 @@ public class DC_Container implements DisplayableClass {
 	}
 
 	@Override
-	public void ajouter_Elt_BdD(List<String> list, Dao dao) {
+	public void ajouter_Elt_BdD(List<Object> list, Dao dao) {
 		ContainerDao container = new ContainerDao();
+		
+		if(list.size()==11) {
+			container.setContainerModule((String) list.get(1)); 
+			container.setSecteur((SecteurDao) list.get(2));
+			container.setContainerNumber((int) list.get(3)); 
+			container.setContainerDesignationGenerique((String) list.get(4)); 
+			container.setContainerLength((int) list.get(5));
+			container.setContainerWidth((int) list.get(6));
+			container.setContainerHeight((int) list.get(7));
+			container.setContainerVolumeMax((int) list.get(8));
+			container.setContainerWeightMax((int) list.get(9));
+			container.setContainerObservation((String) list.get(10));
+		}
+		
 		dao.addContainer(container);
 
 	}
 
 	@Override
-	public void modifier_Elt_BdD(int id, List<String> list, Dao dao) {
+	public void modifier_Elt_BdD(int id, List<Object> list, Dao dao) {
 		// TODO Auto-generated method stub
 
 	}

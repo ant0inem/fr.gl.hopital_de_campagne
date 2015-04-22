@@ -55,13 +55,13 @@ public interface DisplayableClass {
 	/**
 	 * add an element to the DB
 	 */
-	public abstract void ajouter_Elt_BdD(List<String> list, Dao dao);
+	public abstract void ajouter_Elt_BdD(List<Object> list, Dao dao);
 	
 	/**
 	 * modifies the element with the ID id in the DB
 	 * @param id
 	 */
-	public abstract void modifier_Elt_BdD(int id, List<String> list, Dao dao);
+	public abstract void modifier_Elt_BdD(int id, List<Object> list, Dao dao);
 
 	/**
 	 * removes the element with the ID id from the DB

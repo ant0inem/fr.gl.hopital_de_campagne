@@ -79,7 +79,7 @@ public class VueGestionBdD extends JPanel {
 	 * 
 	 * @return the fields wrote in the PaneAddElement
 	 */
-	public List<String> getCurrentAddFields() {
+	public List<Object> getCurrentAddFields() {
 		return pane1.getFields();
 	}
 	

@@ -53,6 +53,7 @@ public class PaneAddElement extends JPanel {
 			
 			if(o.getAttributType(i)==DisplayableClass.INTEGER_TYPE) {
 				champ = new JFormattedTextField(NumberFormat.getIntegerInstance());
+				((JFormattedTextField) champ).setValue(0);
 			}
 			else if(o.getAttributType(i)==DisplayableClass.STRING_TYPE) {
 				champ = new JTextField();	
@@ -76,9 +77,14 @@ public class PaneAddElement extends JPanel {
 		
 	}
 	
-	public List<String> getFields() {
-		List<String> fields = new ArrayList<String>();
-//		for(JComponent champ:champs) fields.add(champ.getText());
+	public List<Object> getFields() {
+		List<Object> fields = new ArrayList<Object>();
+		for(JComponent champ:champs) {
+			//Attention, l ordre des if est important
+			if(champ instanceof JFormattedTextField) fields.add(((JFormattedTextField) champ).getValue());
+			else if(champ instanceof JTextField) fields.add(((JTextField) champ).getText());
+			else if(champ instanceof JComboBox<?>) fields.add(((JComboBox<?>) champ).getSelectedItem());
+		}
 		return fields;
 	}
 

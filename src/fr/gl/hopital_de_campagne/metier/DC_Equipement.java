@@ -131,12 +131,12 @@ public class DC_Equipement implements DisplayableClass {
 	}
 
 	@Override
-	public void ajouter_Elt_BdD(List<String> list, Dao dao) {
+	public void ajouter_Elt_BdD(List<Object> list, Dao dao) {
 		
 	}
 
 	@Override
-	public void modifier_Elt_BdD(int id, List<String> list, Dao dao) {
+	public void modifier_Elt_BdD(int id, List<Object> list, Dao dao) {
 		// TODO Auto-generated method stub
 
 	}

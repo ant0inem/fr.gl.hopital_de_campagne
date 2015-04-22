@@ -123,13 +123,13 @@ public class DC_Medicament implements DisplayableClass {
 	}
 
 	@Override
-	public void ajouter_Elt_BdD(List<String> list, Dao dao) {
+	public void ajouter_Elt_BdD(List<Object> list, Dao dao) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void modifier_Elt_BdD(int id, List<String> list, Dao dao) {
+	public void modifier_Elt_BdD(int id, List<Object> list, Dao dao) {
 		// TODO Auto-generated method stub
 		
 	}
