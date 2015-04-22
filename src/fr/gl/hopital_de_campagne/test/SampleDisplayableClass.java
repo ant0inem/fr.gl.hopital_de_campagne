@@ -3,6 +3,7 @@ package fr.gl.hopital_de_campagne.test;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.gl.hopital_de_campagne.dao.Dao;
 import fr.gl.hopital_de_campagne.gui.DisplayableClass;
 
 public class SampleDisplayableClass implements DisplayableClass {
@@ -37,19 +38,19 @@ public class SampleDisplayableClass implements DisplayableClass {
 	}
 
 	@Override
-	public void ajouter_Elt_BdD(List<String> list) {
+	public void ajouter_Elt_BdD(List<String> list, Dao dao) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void modifier_Elt_BdD(int id, List<String> list) {
+	public void modifier_Elt_BdD(int id, List<String> list, Dao dao) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void supprimer_Elt_BdD(int id) {
+	public void supprimer_Elt_BdD(int id, Dao dao) {
 		// TODO Auto-generated method stub
 		
 	}

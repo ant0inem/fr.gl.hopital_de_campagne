@@ -3,6 +3,8 @@ package fr.gl.hopital_de_campagne.gui;
 import java.lang.Object;
 import java.util.List;
 
+import fr.gl.hopital_de_campagne.dao.Dao;
+
 /**
  * Les instances de DisplayableClass peuvent etre afficher comme une ligne
  * d un tableau (voir Table).
@@ -10,18 +12,18 @@ import java.util.List;
  *
  */
 public interface DisplayableClass {
+	
+	public static int STRING_TYPE = 0;
+	public static int INTEGER_TYPE = 1;
+	public static int SECTEUR_TYPE = 2;
 
 	
 	/**
-	 * ! Attention, le nombre d attributs doit etre identique pour tous les
-	 * instances d une meme DisplayableClass !
 	 * @return nombre d attribut a afficher
 	 */
 	public abstract int getNbAttribut();
 	
 	/**
-	 * ! Attention, le nombre d attributs doit etre identique pour tous les
-	 * instances d une meme DisplayableClass !
 	 * @return nombre d attribut a afficher
 	 */
 	public abstract int getNbElement();
@@ -41,8 +43,9 @@ public interface DisplayableClass {
 	public abstract String getAttributName(int i);
 	
 	/**
-	 * ! Attention, le type d attributs doit etre identique pour tous les
-	 * instances d une meme DisplayableClass !
+	 * An attribut has a type. Types are limited
+	 * to the types define in constant in the 
+	 * interface DisplayableClass
 	 * @param i indice de la colonne
 	 * @return type de la valeur de la colonne
 	 */
@@ -52,17 +55,17 @@ public interface DisplayableClass {
 	/**
 	 * add an element to the DB
 	 */
-	public abstract void ajouter_Elt_BdD(List<String> list);
+	public abstract void ajouter_Elt_BdD(List<String> list, Dao dao);
 	
 	/**
 	 * modifies the element with the ID id in the DB
 	 * @param id
 	 */
-	public abstract void modifier_Elt_BdD(int id, List<String> list);
+	public abstract void modifier_Elt_BdD(int id, List<String> list, Dao dao);
 
 	/**
 	 * removes the element with the ID id from the DB
 	 * @param id
 	 */
-	public abstract void supprimer_Elt_BdD(int id);
+	public abstract void supprimer_Elt_BdD(int id, Dao dao);
 }

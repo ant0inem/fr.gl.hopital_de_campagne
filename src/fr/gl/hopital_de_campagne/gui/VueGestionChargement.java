@@ -45,7 +45,7 @@ public class VueGestionChargement extends JPanel {
 		
 		add(center, BorderLayout.CENTER);
 		
-		pane1 = new PaneLoadsSummary();
+		pane1 = new PaneLoadsSummary(l);
 		add(pane1, BorderLayout.SOUTH);
 		
 	}

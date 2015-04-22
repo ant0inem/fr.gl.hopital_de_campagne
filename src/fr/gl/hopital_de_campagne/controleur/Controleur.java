@@ -8,6 +8,7 @@ import java.awt.event.KeyListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JTable;
@@ -15,6 +16,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import fr.gl.hopital_de_campagne.dao.Dao;
+import fr.gl.hopital_de_campagne.dao.SecteurDao;
 import fr.gl.hopital_de_campagne.gui.DisplayableClass;
 import fr.gl.hopital_de_campagne.gui.MenuGUI;
 import fr.gl.hopital_de_campagne.gui.Table;
@@ -46,6 +48,7 @@ public class Controleur implements ActionListener, KeyListener, PropertyChangeLi
 	
 	private Controleur() {
 		initialiserWindow();
+		dao = new Dao();
 	}
 	
 	public void initialiserWindow(){
@@ -55,8 +58,6 @@ public class Controleur implements ActionListener, KeyListener, PropertyChangeLi
 		mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		mainWindow.setJMenuBar((new MenuGUI(this)).getMenuBar());
-		
-		dao = new Dao();
 	}
 	
 	public void displayContent(DisplayableClass o) {
@@ -106,7 +107,7 @@ public class Controleur implements ActionListener, KeyListener, PropertyChangeLi
 		
 		case "ajouter_Elt_BdD" :
 			ArrayList<String> list = new ArrayList<String>();
-			dc.ajouter_Elt_BdD(list);
+			dc.ajouter_Elt_BdD(list, dao);
 			break;
 			
 		case "modifier_Elt_BdD" :
@@ -154,5 +155,9 @@ public class Controleur implements ActionListener, KeyListener, PropertyChangeLi
 		}
 		
 	}	
+	
+	public List<SecteurDao> getAllSecteurDao() {
+		return dao.getAllSecteurDao();
+	}
 
 }

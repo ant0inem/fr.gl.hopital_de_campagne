@@ -4,6 +4,12 @@ import javax.persistence.*;
 
 @Entity
 public class SecteurDao {
+	
+	@Override
+	public String toString() {
+		return "" + secteurName;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;

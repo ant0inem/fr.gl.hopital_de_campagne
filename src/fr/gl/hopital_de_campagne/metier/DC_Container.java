@@ -4,33 +4,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.gl.hopital_de_campagne.dao.ContainerDao;
+import fr.gl.hopital_de_campagne.dao.Dao;
 import fr.gl.hopital_de_campagne.gui.DisplayableClass;
 
 public class DC_Container implements DisplayableClass {
 
-	private String[] columnNames = { "ID", "containerNumber",
-			"containerLength", "containerWidth", "containerHeight",
-			"containerVolumeMax", "containerVolumeUsed", "containerWeightMax",
-			"containerWeightUsed", "containerDesignationGenerique",
-			"containerObservation", "containerModule", "containerPriority" };
+	private String[] columnNames = { "ID", "module", "secteur", "N° du colis",
+			"Désignation génerique du colis", "long", "larg", "haut",
+			"volume (m3)", "Poids (kg)", "Observations" };
 	private List<ContainerDao> cont_List = new ArrayList<ContainerDao>();
 	private static DC_Container instance = null;
 
-	
-	public static DC_Container getInstance(List<ContainerDao> cont_List){
-		if (instance == null){
+	public static DC_Container getInstance(List<ContainerDao> cont_List) {
+		if (instance == null) {
 			instance = new DC_Container(cont_List);
 		}
 		return instance;
 	}
-	
-	public static DC_Container getInstance(){
-		if (instance == null){
+
+	public static DC_Container getInstance() {
+		if (instance == null) {
 			instance = new DC_Container(null);
 		}
 		return instance;
 	}
-	
+
 	private DC_Container(List<ContainerDao> cont_List) {
 		setMed_List(cont_List);
 	}
@@ -72,40 +70,34 @@ public class DC_Container implements DisplayableClass {
 			o = cont.getIdContainer();
 			break;
 		case 1:
-			o = cont.getContainerNumber();
+			o = cont.getContainerModule();
 			break;
 		case 2:
-			o = cont.getContainerLength();
+			o = cont.getSecteur();
 			break;
 		case 3:
-			o = cont.getContainerWidth();
+			o = cont.getContainerNumber();
 			break;
 		case 4:
-			o = cont.getContainerHeight();
+			o = cont.getContainerDesignationGenerique();
 			break;
 		case 5:
-			o = cont.getContainerVolumeMax();
+			o = cont.getContainerLength();
 			break;
 		case 6:
-			o = cont.getContainerVolumeUsed();
+			o = cont.getContainerWidth();
 			break;
 		case 7:
-			o = cont.getContainerWeightMax();
+			o = cont.getContainerHeight();
 			break;
 		case 8:
-			o = cont.getContainerWeightUsed();
+			o = cont.getContainerVolumeMax();
 			break;
 		case 9:
-			o = cont.getContainerDesignationGenerique();
+			o = cont.getContainerWeightMax();
 			break;
 		case 10:
 			o = cont.getContainerObservation();
-			break;
-		case 11:
-			o = cont.getContainerModule();
-			break;
-		case 12:
-			o = cont.getContainerPriority();
 			break;
 		}
 
@@ -123,42 +115,60 @@ public class DC_Container implements DisplayableClass {
 		// 1 = int, 2 = String
 		switch (i) {
 		case 0:
+			type = DisplayableClass.INTEGER_TYPE;
+			break;
 		case 1:
+			type = DisplayableClass.STRING_TYPE;
+			break;
 		case 2:
+			type = DisplayableClass.SECTEUR_TYPE;
+			break;
 		case 3:
+			type = DisplayableClass.INTEGER_TYPE;
+			break;
 		case 4:
+			type = DisplayableClass.STRING_TYPE;
+			break;
 		case 5:
+			type = DisplayableClass.INTEGER_TYPE;
+			break;
 		case 6:
+			type = DisplayableClass.INTEGER_TYPE;
+			break;
 		case 7:
+			type = DisplayableClass.INTEGER_TYPE;
+			break;
 		case 8:
-			type = 1;
+			type = DisplayableClass.INTEGER_TYPE;
 			break;
 		case 9:
-		case 10:
-		case 11:
-		case 12:
-			type = 2;
+			type = DisplayableClass.INTEGER_TYPE;
 			break;
+		case 10:
+			type = DisplayableClass.STRING_TYPE;
+			break;
+
 		}
 		return type;
 	}
 
 	@Override
-	public void ajouter_Elt_BdD(List<String> list) {
-		// TODO Auto-generated method stub
-		
+	public void ajouter_Elt_BdD(List<String> list, Dao dao) {
+		ContainerDao container = new ContainerDao();
+		dao.addContainer(container);
+
 	}
 
 	@Override
-	public void modifier_Elt_BdD(int id, List<String> list) {
+	public void modifier_Elt_BdD(int id, List<String> list, Dao dao) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
-	public void supprimer_Elt_BdD(int id) {
+	public void supprimer_Elt_BdD(int id, Dao dao) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

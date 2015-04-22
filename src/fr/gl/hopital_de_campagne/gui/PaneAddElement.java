@@ -4,20 +4,28 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
+import fr.gl.hopital_de_campagne.controleur.Controleur;
+import fr.gl.hopital_de_campagne.dao.SecteurDao;
+
 public class PaneAddElement extends JPanel {
 	
-	private List<JTextField> champs;
+	private List<JComponent> champs;
 	
 	public PaneAddElement(DisplayableClass o, ActionListener l) {
 		
@@ -36,12 +44,23 @@ public class PaneAddElement extends JPanel {
 		JPanel center = new JPanel();
 		center.setLayout(new BoxLayout(center, BoxLayout.X_AXIS));
 		
-		champs = new ArrayList<JTextField>();
+		champs = new ArrayList<JComponent>();
 		for(int i=0; i<o.getNbAttribut(); i++) {
 			JPanel couplePane = new JPanel();
 			couplePane.setLayout(new BoxLayout(couplePane, BoxLayout.Y_AXIS));
 			couplePane.add(new JLabel(o.getAttributName(i)));
-			JTextField champ = new JTextField();
+			JComponent champ = new JLabel("Erreur");
+			
+			if(o.getAttributType(i)==DisplayableClass.INTEGER_TYPE) {
+				champ = new JFormattedTextField(NumberFormat.getIntegerInstance());
+			}
+			else if(o.getAttributType(i)==DisplayableClass.STRING_TYPE) {
+				champ = new JTextField();	
+			}
+			else if(o.getAttributType(i)==DisplayableClass.SECTEUR_TYPE) {
+				champ = new JComboBox<SecteurDao>((Vector<SecteurDao>) Controleur.getInstance().getAllSecteurDao());
+			}
+			
 			champs.add(champ);
 			couplePane.add(champ);
 			couplePane.setMinimumSize(new Dimension(200,40));
@@ -59,7 +78,7 @@ public class PaneAddElement extends JPanel {
 	
 	public List<String> getFields() {
 		List<String> fields = new ArrayList<String>();
-		for(JTextField champ:champs) fields.add(champ.getText());
+//		for(JComponent champ:champs) fields.add(champ.getText());
 		return fields;
 	}
 

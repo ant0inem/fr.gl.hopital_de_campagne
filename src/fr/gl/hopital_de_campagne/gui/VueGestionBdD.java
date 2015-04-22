@@ -65,14 +65,14 @@ public class VueGestionBdD extends JPanel {
 	public void setDisplayableClass(DisplayableClass o, Controleur l) {
 		table = new MyTable(o, (ListSelectionListener) l);
 		add(table.getTable(), BorderLayout.CENTER);
-		table.setSelectedRow(0);
+		if(o.getNbElement()!=0) table.setSelectedRow(0);
 		
 		pane1 = new PaneAddElement(o, l);
 		tabbedPane.setComponentAt(0, pane1);
 		
 		pane2 = new PaneModifyElement(o, l);
 		tabbedPane.setComponentAt(1, pane2);
-		setCurrentModifyFields(getValuesOfRow(0));
+		if(o.getNbElement()!=0) setCurrentModifyFields(getValuesOfRow(0));
 	}
 	
 	/**
