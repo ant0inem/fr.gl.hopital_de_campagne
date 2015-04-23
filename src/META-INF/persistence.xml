@@ -13,7 +13,7 @@
     <properties>
       <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
       <property name="javax.persistence.jdbc.url"
-        value="jdbc:h2:./src/BD/BDH2" />
+        value="jdbc:h2:./bdd/BDD_Hopital_de_campagne" />
       <property name="javax.persistence.jdbc.user" value="sa" />
       <property name="javax.persistence.jdbc.password" value="" />
 
