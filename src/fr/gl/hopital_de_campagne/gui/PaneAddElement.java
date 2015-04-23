@@ -85,8 +85,6 @@ public class PaneAddElement extends JPanel {
 		for(JComponent champ:champs) {
 			//Attention, l ordre des if est important
 			if(champ instanceof JFormattedTextField) {
-//				Object x = Integer.parseInt(((JFormattedTextField) champ).getText());
-//				fields.add(x);
 				fields.add(((JFormattedTextField) champ).getValue());
 			}
 			else if(champ instanceof JTextField) fields.add(((JTextField) champ).getText());

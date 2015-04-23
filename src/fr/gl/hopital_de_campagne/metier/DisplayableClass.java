@@ -61,7 +61,7 @@ public interface DisplayableClass {
 	 * modifies the element with the ID id in the DB
 	 * @param id
 	 */
-	public abstract void modifier_Elt_BdD(int id, List<Object> list, Dao dao);
+	public abstract void modifier_Elt_BdD(Object object, List<Object> list, Dao dao);
 
 	/**
 	 * removes the element with the ID id from the DB

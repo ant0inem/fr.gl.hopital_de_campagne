@@ -46,12 +46,6 @@ public class SampleDisplayableClass implements DisplayableClass {
 	}
 
 	@Override
-	public void modifier_Elt_BdD(int id, List<Object> list, Dao dao) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void supprimer_Elt_BdD(Object o, Dao dao) {
 		// TODO Auto-generated method stub
 		
@@ -60,6 +54,12 @@ public class SampleDisplayableClass implements DisplayableClass {
 	@Override
 	public Object getObject(int index) {
 		return data[index];
+	}
+
+	@Override
+	public void modifier_Elt_BdD(Object object, List<Object> list, Dao dao) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

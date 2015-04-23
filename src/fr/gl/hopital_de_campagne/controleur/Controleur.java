@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import fr.gl.hopital_de_campagne.dao.ContainerDao;
 import fr.gl.hopital_de_campagne.dao.Dao;
 import fr.gl.hopital_de_campagne.dao.SecteurDao;
 import fr.gl.hopital_de_campagne.gui.MenuGUI;
@@ -109,6 +110,10 @@ public class Controleur implements ActionListener, KeyListener, PropertyChangeLi
 			break;
 			
 		case "modifier_Elt_BdD" :
+			if(vueGestionBdD!=null) {
+				dc.modifier_Elt_BdD(vueGestionBdD.getSelectedObject(), vueGestionBdD.getCurrentModifyFields(), dao);
+				vueGestionBdD.revalidate();
+			}
 			break;
 			
 		case "supprimer_Elt_BdD" :

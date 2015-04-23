@@ -85,7 +85,7 @@ public class VueGestionBdD extends JPanel {
 	 * 
 	 * @return the fields wrote in the PaneModifyElement
 	 */
-	public List<String> getCurrentModifyFields() {
+	public List<Object> getCurrentModifyFields() {
 		return pane2.getFields();
 	}
 	

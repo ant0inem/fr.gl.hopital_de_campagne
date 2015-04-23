@@ -149,6 +149,24 @@ public class Dao {
 			em.getTransaction().commit();
 		}
 		
+		public void updateContainer(ContainerDao container, List<Object> list) {
+			em.getTransaction().begin();
+			
+			if(list.size()==11) {
+				container.setContainerModule((String) list.get(1)); 
+				container.setSecteur((SecteurDao) list.get(2));
+				container.setContainerNumber(objectToInteger(list.get(3))); 
+				container.setContainerDesignationGenerique((String) list.get(4)); 
+				container.setContainerLength(objectToInteger(list.get(5)));
+				container.setContainerWidth(objectToInteger(list.get(6)));
+				container.setContainerHeight(objectToInteger(list.get(7)));
+				container.setContainerVolumeMax(objectToInteger(list.get(8)));
+				container.setContainerWeightMax(objectToInteger(list.get(9)));
+				container.setContainerObservation((String) list.get(10));
+			}		
+			em.getTransaction().commit();
+		}
+		
 		
 	static public void main(String[] args) {
 		Dao dao = new Dao();
@@ -179,5 +197,10 @@ public class Dao {
 //		factory.close();
 	}
 	
+	public static int objectToInteger(Object o) {
+		if(o instanceof Integer) return (int) o;
+		if(o instanceof Long) return Integer.parseInt(Long.toString((long) o));
+		return 0;
+	}
 
 }

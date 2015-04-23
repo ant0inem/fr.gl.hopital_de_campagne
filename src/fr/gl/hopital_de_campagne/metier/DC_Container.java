@@ -159,13 +159,13 @@ public class DC_Container implements DisplayableClass {
 		if(list.size()==11) {
 			container.setContainerModule((String) list.get(1)); 
 			container.setSecteur((SecteurDao) list.get(2));
-			container.setContainerNumber(Integer.parseInt(Long.toString((long) list.get(3)))); 
+			container.setContainerNumber(Dao.objectToInteger(list.get(3))); 
 			container.setContainerDesignationGenerique((String) list.get(4)); 
-			container.setContainerLength(Integer.parseInt(Long.toString((long) list.get(5))));
-			container.setContainerWidth(Integer.parseInt(Long.toString((long) list.get(6))));
-			container.setContainerHeight(Integer.parseInt(Long.toString((long) list.get(7))));
-			container.setContainerVolumeMax(Integer.parseInt(Long.toString((long) list.get(8))));
-			container.setContainerWeightMax(Integer.parseInt(Long.toString((long) list.get(9))));
+			container.setContainerLength(Dao.objectToInteger(list.get(5)));
+			container.setContainerWidth(Dao.objectToInteger(list.get(6)));
+			container.setContainerHeight(Dao.objectToInteger(list.get(7)));
+			container.setContainerVolumeMax(Dao.objectToInteger(list.get(8)));
+			container.setContainerWeightMax(Dao.objectToInteger(list.get(9)));
 			container.setContainerObservation((String) list.get(10));
 		}
 		
@@ -175,8 +175,8 @@ public class DC_Container implements DisplayableClass {
 	}
 
 	@Override
-	public void modifier_Elt_BdD(int id, List<Object> list, Dao dao) {
-		// TODO Auto-generated method stub
+	public void modifier_Elt_BdD(Object o, List<Object> list, Dao dao) {
+		dao.updateContainer((ContainerDao) o, list);
 
 	}
 

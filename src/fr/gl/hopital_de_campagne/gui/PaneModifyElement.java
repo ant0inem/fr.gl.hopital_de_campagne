@@ -4,23 +4,30 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
+import fr.gl.hopital_de_campagne.controleur.Controleur;
+import fr.gl.hopital_de_campagne.dao.SecteurDao;
 import fr.gl.hopital_de_campagne.metier.DisplayableClass;
 
 @SuppressWarnings("serial")
 public class PaneModifyElement extends JPanel {
 	
-	private List<JTextField> champs;
+	private List<JComponent> champs;
 	
 	public PaneModifyElement(DisplayableClass o, ActionListener l) {
 		
@@ -43,12 +50,25 @@ public class PaneModifyElement extends JPanel {
 		JPanel center = new JPanel();
 		center.setLayout(new BoxLayout(center, BoxLayout.X_AXIS));
 		
-		champs = new ArrayList<JTextField>();
+		champs = new ArrayList<JComponent>();
 		for(int i=0; i<o.getNbAttribut(); i++) {
 			JPanel couplePane = new JPanel();
 			couplePane.setLayout(new BoxLayout(couplePane, BoxLayout.Y_AXIS));
 			couplePane.add(new JLabel(o.getAttributName(i)));
-			JTextField champ = new JTextField();
+			JComponent champ = new JLabel("Erreur");
+			
+			if(o.getAttributType(i)==DisplayableClass.INTEGER_TYPE) {
+				NumberFormat format = NumberFormat.getIntegerInstance();
+				format.setGroupingUsed(false);
+				champ = new JFormattedTextField(format);
+				((JFormattedTextField) champ).setValue((long) 0);
+			}
+			else if(o.getAttributType(i)==DisplayableClass.STRING_TYPE) {
+				champ = new JTextField();	
+			}
+			else if(o.getAttributType(i)==DisplayableClass.SECTEUR_TYPE) {
+				champ = new JComboBox<SecteurDao>((Vector<SecteurDao>) Controleur.getInstance().getAllSecteurDao());
+			}
 			champs.add(champ);
 			couplePane.add(champ);
 			couplePane.setMinimumSize(new Dimension(200,40));
@@ -64,9 +84,16 @@ public class PaneModifyElement extends JPanel {
 		
 	}
 
-	public List<String> getFields() {
-		List<String> fields = new ArrayList<String>();
-		for(JTextField champ:champs) fields.add(champ.getText());
+	public List<Object> getFields() {
+		List<Object> fields = new ArrayList<Object>();
+		for(JComponent champ:champs) {
+			//Attention, l ordre des if est important
+			if(champ instanceof JFormattedTextField) {
+				fields.add(((JFormattedTextField) champ).getValue());
+			}
+			else if(champ instanceof JTextField) fields.add(((JTextField) champ).getText());
+			else if(champ instanceof JComboBox<?>) fields.add(((JComboBox<?>) champ).getSelectedItem());
+		}
 		return fields;
 	}
 	
@@ -74,8 +101,17 @@ public class PaneModifyElement extends JPanel {
 		int i=0;
 		if(champs.size()==0) return;
 		for(Object field:fields) {
-			if(field!=null)champs.get(i).setText(field.toString());
-			else champs.get(i).setText("ERREUR");
+//			if(field!=null)champs.get(i).setText(field.toString());
+//			else champs.get(i).setText("ERREUR");
+			if(champs.get(i) instanceof JFormattedTextField) {
+				((JFormattedTextField) champs.get(i)).setValue(field);
+			}
+			else if(champs.get(i) instanceof JTextField) {
+				((JTextField) champs.get(i)).setText(field.toString());;
+			}
+			else if(champs.get(i) instanceof JComboBox<?>) {
+				((JComboBox<?>) champs.get(i)).setSelectedItem(field);
+			}
 			i++;
 		}
 	}
