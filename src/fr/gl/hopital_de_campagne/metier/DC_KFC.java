@@ -111,9 +111,14 @@ public class DC_KFC implements DisplayableClass {
 	}
 
 	@Override
-	public void supprimer_Elt_BdD(int id, Dao dao) {
+	public void supprimer_Elt_BdD(Object o, Dao dao) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	@Override
+	public Object getObject(int index) {
+		return this.getKfc_List().get(index);
 	}
 
 }

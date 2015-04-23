@@ -37,5 +37,9 @@ public abstract class Table {
 	 * @param rowIndex index of a row
 	 */
 	public abstract void setSelectedRow(int rowIndex);
+	
+	public abstract void revalidate();
+	
+	public abstract Object getElementAt(int row);
 
 }

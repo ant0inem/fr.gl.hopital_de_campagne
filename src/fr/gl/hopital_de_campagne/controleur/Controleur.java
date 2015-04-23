@@ -43,30 +43,10 @@ public class Controleur implements ActionListener, KeyListener, PropertyChangeLi
 	}
 	
 	private Controleur() {
-		initialiserH2();
 		initialiserWindow();
 		dao = new Dao();
 	}
 	
-	public void initialiserH2(){
-//		String nomDriver = "org.h2.Driver";
-//		try{
-//		    Class.forName(nomDriver); 
-//		}catch(ClassNotFoundException cnfe){
-//		}
-//		
-//		try{
-//			String url = "jdbc:h2:./src/BD/BDH2;IFEXISTS=TRUE";
-//			connection = DriverManager.getConnection(url,login,password);
-//			connection.close();
-//			BDExistante = true;
-//
-//			System.out.println ("Base de données H2 détectée...");
-//		} catch(SQLException sqle) {
-//		}
-//		
-		
-	}
 	public void initialiserWindow(){
 		mainWindow = new JFrame("Hôpital de campagne");
 		mainWindow.setSize(800, 600);
@@ -132,6 +112,10 @@ public class Controleur implements ActionListener, KeyListener, PropertyChangeLi
 			break;
 			
 		case "supprimer_Elt_BdD" :
+			if(vueGestionBdD!=null) {
+				dc.supprimer_Elt_BdD(vueGestionBdD.getSelectedObject(), dao);;
+				vueGestionBdD.revalidate();
+			}
 			break;
 			
 		case "viewContainer" :

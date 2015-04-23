@@ -105,6 +105,10 @@ public class VueGestionBdD extends JPanel {
 		return table.getIndexOfSelectedRow();
 	}
 	
+	public Object getSelectedObject() {
+		return table.getElementAt(getSelectedRow());
+	}
+	
 	/**
 	 * 
 	 * @param rowIndex index of a row
@@ -117,7 +121,7 @@ public class VueGestionBdD extends JPanel {
 	@Override
 	public void revalidate() {
 		super.revalidate();
-		if(table!=null) ((MyTable) table).revalidate();
+		if(table!=null) table.revalidate();
 	}
 
 }

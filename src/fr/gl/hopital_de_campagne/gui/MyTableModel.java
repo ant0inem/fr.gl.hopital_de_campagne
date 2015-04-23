@@ -49,5 +49,9 @@ public class MyTableModel extends AbstractTableModel {
 	public String getColumnName(int col) {
         return getDc().getAttributName(col);
     }
+	
+	public Object getObjectAt(int row) {
+		return dc.getObject(row);
+	}
 
 }

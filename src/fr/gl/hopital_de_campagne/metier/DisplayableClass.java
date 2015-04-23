@@ -67,6 +67,8 @@ public interface DisplayableClass {
 	 * removes the element with the ID id from the DB
 	 * @param id
 	 */
-	public abstract void supprimer_Elt_BdD(int id, Dao dao);
+	public abstract void supprimer_Elt_BdD(Object o, Dao dao);
+	
+	public abstract Object getObject(int index);
 
 }

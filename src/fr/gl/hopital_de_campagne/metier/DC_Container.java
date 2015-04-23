@@ -171,7 +171,6 @@ public class DC_Container implements DisplayableClass {
 		
 		dao.addContainer(container);
 		this.getCont_List().add(container);
-//		emetteur.firePropertyChange("dcElement", null, container);	
 
 	}
 
@@ -182,9 +181,14 @@ public class DC_Container implements DisplayableClass {
 	}
 
 	@Override
-	public void supprimer_Elt_BdD(int id, Dao dao) {
-		// TODO Auto-generated method stub
+	public void supprimer_Elt_BdD(Object o, Dao dao) {
+		dao.deleteContainer((ContainerDao) o);
+		this.getCont_List().remove(o);
+	}
 
+	@Override
+	public Object getObject(int index) {
+		return this.getCont_List().get(index);
 	}
 
 }
