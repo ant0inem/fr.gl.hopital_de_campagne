@@ -3,15 +3,13 @@ package fr.gl.hopital_de_campagne.gui;
 import javax.swing.JPanel;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JTabbedPane;
 import javax.swing.event.ListSelectionListener;
 
 import fr.gl.hopital_de_campagne.controleur.Controleur;
+import fr.gl.hopital_de_campagne.metier.DisplayableClass;
 
 /**
  * La vue gestion base de donnees permet aux utilisateurs de voir la base 
@@ -114,6 +112,12 @@ public class VueGestionBdD extends JPanel {
 	 */
 	public List<Object> getValuesOfRow(int rowIndex) {
 		return table.getValuesOfRow(rowIndex);
+	}
+	
+	@Override
+	public void revalidate() {
+		super.revalidate();
+		if(table!=null) ((MyTable) table).revalidate();
 	}
 
 }

@@ -7,14 +7,17 @@ import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableModel;
 
-@SuppressWarnings("serial")
+import fr.gl.hopital_de_campagne.metier.DisplayableClass;
+
 public class MyTable extends  Table {
 	
 	private JTable jTable;
 	private TableModel tableModel;
+	private JScrollPane s;
 	
 	public MyTable(DisplayableClass o, ListSelectionListener l) {
 		super(o);
@@ -28,7 +31,7 @@ public class MyTable extends  Table {
 		}
 		jTable = new JTable(new MyTableModel(data, columnNames));
 		*/
-		tableModel = new MyTableModel2(o);
+		tableModel = new MyTableModel(o);
 		jTable = new JTable(tableModel);
 		jTable.getSelectionModel().addListSelectionListener(l);
 
@@ -38,7 +41,7 @@ public class MyTable extends  Table {
 	@Override
 	public JPanel getTable() {
 		JPanel p = new JPanel(new BorderLayout());
-		JScrollPane s = new JScrollPane(jTable);
+		s = new JScrollPane(jTable);
 		jTable.setFillsViewportHeight(true);
 		jTable.setRowSelectionAllowed(true);
 		jTable.setColumnSelectionAllowed(false);
@@ -67,6 +70,10 @@ public class MyTable extends  Table {
 	public void setSelectedRow(int rowIndex) {
 		jTable.setRowSelectionInterval(rowIndex, rowIndex);
 		
+	}
+	
+	public void revalidate() {
+		SwingUtilities.updateComponentTreeUI(s);
 	}
 
 }

@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 
 import fr.gl.hopital_de_campagne.controleur.Controleur;
-import fr.gl.hopital_de_campagne.gui.DisplayableClass;
 import fr.gl.hopital_de_campagne.gui.VueGestionChargement;
 import fr.gl.hopital_de_campagne.metier.*;
 import fr.gl.hopital_de_campagne.dao.*;

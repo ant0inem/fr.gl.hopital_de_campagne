@@ -1,4 +1,4 @@
-package fr.gl.hopital_de_campagne.gui;
+package fr.gl.hopital_de_campagne.metier;
 
 import java.lang.Object;
 import java.util.List;
@@ -68,4 +68,5 @@ public interface DisplayableClass {
 	 * @param id
 	 */
 	public abstract void supprimer_Elt_BdD(int id, Dao dao);
+
 }

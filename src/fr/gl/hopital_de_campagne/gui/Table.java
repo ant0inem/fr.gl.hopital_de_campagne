@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
+import fr.gl.hopital_de_campagne.metier.DisplayableClass;
+
 public abstract class Table {
 	
 	public Table(DisplayableClass o) {

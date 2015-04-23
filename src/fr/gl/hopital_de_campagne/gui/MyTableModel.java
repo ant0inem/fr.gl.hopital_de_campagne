@@ -2,38 +2,44 @@ package fr.gl.hopital_de_campagne.gui;
 
 import javax.swing.table.AbstractTableModel;
 
+import fr.gl.hopital_de_campagne.metier.DisplayableClass;
+
 /**
  * Contient les informations a afficher dans nos tableaux. Permet de gerer
  * le comportement des cellules du tableau.
  * @author bruno
  *
  */
+@SuppressWarnings("serial")
 public class MyTableModel extends AbstractTableModel {
 	
-	Object[][] data;
-	String[] columnNames;
+	private DisplayableClass dc;
 	
-	public MyTableModel(Object[][] data, String[] columnNames) {
-		this.data = data;
-		this.columnNames = columnNames;
+	public MyTableModel(DisplayableClass dc) {
+		setDc(dc);
+	}
+
+	public DisplayableClass getDc() {
+		return dc;
+	}
+
+	public void setDc(DisplayableClass dc) {
+		this.dc = dc;
 	}
 
 	@Override
 	public int getColumnCount() {
-		if(data == null) return 0;
-		if(data[0] == null) return 0;
-		return data[0].length;
+		return getDc().getNbAttribut();
 	}
 
 	@Override
 	public int getRowCount() {
-		if(data == null) return 0;
-		return data.length;
+		return getDc().getNbElement();
 	}
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		return data[rowIndex][columnIndex];
+		return getDc().getAttribut(rowIndex, columnIndex);
 	}
 	
 	public boolean isCellEditable(int row, int col) {
@@ -41,7 +47,7 @@ public class MyTableModel extends AbstractTableModel {
 	}
 	
 	public String getColumnName(int col) {
-        return columnNames[col].toString();
+        return getDc().getAttributName(col);
     }
 
 }

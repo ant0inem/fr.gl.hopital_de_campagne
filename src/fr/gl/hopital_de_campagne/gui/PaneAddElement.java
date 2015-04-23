@@ -19,10 +19,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
-
 import fr.gl.hopital_de_campagne.controleur.Controleur;
 import fr.gl.hopital_de_campagne.dao.SecteurDao;
+import fr.gl.hopital_de_campagne.metier.DisplayableClass;
 
+@SuppressWarnings("serial")
 public class PaneAddElement extends JPanel {
 	
 	private List<JComponent> champs;
@@ -52,8 +53,10 @@ public class PaneAddElement extends JPanel {
 			JComponent champ = new JLabel("Erreur");
 			
 			if(o.getAttributType(i)==DisplayableClass.INTEGER_TYPE) {
-				champ = new JFormattedTextField(NumberFormat.getIntegerInstance());
-				((JFormattedTextField) champ).setValue(0);
+				NumberFormat format = NumberFormat.getIntegerInstance();
+				format.setGroupingUsed(false);
+				champ = new JFormattedTextField(format);
+				((JFormattedTextField) champ).setValue((long) 0);
 			}
 			else if(o.getAttributType(i)==DisplayableClass.STRING_TYPE) {
 				champ = new JTextField();	
@@ -81,7 +84,11 @@ public class PaneAddElement extends JPanel {
 		List<Object> fields = new ArrayList<Object>();
 		for(JComponent champ:champs) {
 			//Attention, l ordre des if est important
-			if(champ instanceof JFormattedTextField) fields.add(((JFormattedTextField) champ).getValue());
+			if(champ instanceof JFormattedTextField) {
+//				Object x = Integer.parseInt(((JFormattedTextField) champ).getText());
+//				fields.add(x);
+				fields.add(((JFormattedTextField) champ).getValue());
+			}
 			else if(champ instanceof JTextField) fields.add(((JTextField) champ).getText());
 			else if(champ instanceof JComboBox<?>) fields.add(((JComboBox<?>) champ).getSelectedItem());
 		}

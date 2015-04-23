@@ -9,15 +9,12 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.List;
 
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.swing.JFrame;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import fr.gl.hopital_de_campagne.dao.Dao;
 import fr.gl.hopital_de_campagne.dao.SecteurDao;
-import fr.gl.hopital_de_campagne.gui.DisplayableClass;
 import fr.gl.hopital_de_campagne.gui.MenuGUI;
 import fr.gl.hopital_de_campagne.gui.VueGestionBdD;
 import fr.gl.hopital_de_campagne.gui.VueGestionChargement;
@@ -125,7 +122,10 @@ public class Controleur implements ActionListener, KeyListener, PropertyChangeLi
 		switch(action){
 		
 		case "ajouter_Elt_BdD" :
-			if(vueGestionBdD!=null) dc.ajouter_Elt_BdD(vueGestionBdD.getCurrentAddFields(), dao);;
+			if(vueGestionBdD!=null) {
+				dc.ajouter_Elt_BdD(vueGestionBdD.getCurrentAddFields(), dao);
+				vueGestionBdD.revalidate();
+			}
 			break;
 			
 		case "modifier_Elt_BdD" :

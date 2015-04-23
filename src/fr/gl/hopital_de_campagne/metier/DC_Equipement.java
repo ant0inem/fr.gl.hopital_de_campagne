@@ -3,7 +3,6 @@ package fr.gl.hopital_de_campagne.metier;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.gl.hopital_de_campagne.gui.DisplayableClass;
 import fr.gl.hopital_de_campagne.dao.Dao;
 import fr.gl.hopital_de_campagne.dao.EquipementDao;
 
@@ -14,7 +13,7 @@ public class DC_Equipement implements DisplayableClass {
 			"equipementDescription", "equipementWeight", "equipementType",
 			"equipementNatureColis", "equipementValue" };
 	private List<EquipementDao> eq_List = new ArrayList<EquipementDao>();
-
+	
 	private static DC_Equipement instance = null;
 
 	public static DC_Equipement getInstance(List<EquipementDao> eq_List) {

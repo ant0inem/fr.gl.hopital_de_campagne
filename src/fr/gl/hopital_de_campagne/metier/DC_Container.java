@@ -6,7 +6,6 @@ import java.util.List;
 import fr.gl.hopital_de_campagne.dao.ContainerDao;
 import fr.gl.hopital_de_campagne.dao.Dao;
 import fr.gl.hopital_de_campagne.dao.SecteurDao;
-import fr.gl.hopital_de_campagne.gui.DisplayableClass;
 
 public class DC_Container implements DisplayableClass {
 
@@ -160,17 +159,19 @@ public class DC_Container implements DisplayableClass {
 		if(list.size()==11) {
 			container.setContainerModule((String) list.get(1)); 
 			container.setSecteur((SecteurDao) list.get(2));
-			container.setContainerNumber((int) list.get(3)); 
+			container.setContainerNumber(Integer.parseInt(Long.toString((long) list.get(3)))); 
 			container.setContainerDesignationGenerique((String) list.get(4)); 
-			container.setContainerLength((int) list.get(5));
-			container.setContainerWidth((int) list.get(6));
-			container.setContainerHeight((int) list.get(7));
-			container.setContainerVolumeMax((int) list.get(8));
-			container.setContainerWeightMax((int) list.get(9));
+			container.setContainerLength(Integer.parseInt(Long.toString((long) list.get(5))));
+			container.setContainerWidth(Integer.parseInt(Long.toString((long) list.get(6))));
+			container.setContainerHeight(Integer.parseInt(Long.toString((long) list.get(7))));
+			container.setContainerVolumeMax(Integer.parseInt(Long.toString((long) list.get(8))));
+			container.setContainerWeightMax(Integer.parseInt(Long.toString((long) list.get(9))));
 			container.setContainerObservation((String) list.get(10));
 		}
 		
 		dao.addContainer(container);
+		this.getCont_List().add(container);
+//		emetteur.firePropertyChange("dcElement", null, container);	
 
 	}
 

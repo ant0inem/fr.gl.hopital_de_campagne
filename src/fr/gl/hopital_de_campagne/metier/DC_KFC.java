@@ -5,7 +5,6 @@ import java.util.List;
 
 import fr.gl.hopital_de_campagne.dao.Dao;
 import fr.gl.hopital_de_campagne.dao.KFCDao;
-import fr.gl.hopital_de_campagne.gui.DisplayableClass;
 
 public class DC_KFC implements DisplayableClass {
 
@@ -13,7 +12,6 @@ public class DC_KFC implements DisplayableClass {
 			"kfcPrix"};
 	private ArrayList<KFCDao> kfc_List = new ArrayList<KFCDao>();
 	private static DC_KFC instance = null;
-
 	
 	public static DC_KFC getInstance(ArrayList<KFCDao> kfc_List){
 		if (instance == null){

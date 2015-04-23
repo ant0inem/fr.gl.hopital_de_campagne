@@ -5,7 +5,6 @@ import java.util.List;
 
 import fr.gl.hopital_de_campagne.dao.Dao;
 import fr.gl.hopital_de_campagne.dao.MedicamentDao;
-import fr.gl.hopital_de_campagne.gui.DisplayableClass;
 
 public class DC_Medicament implements DisplayableClass {
 
@@ -14,7 +13,6 @@ public class DC_Medicament implements DisplayableClass {
 			"medicamentDLU", "medicamentDotationU7", "medicamentLot" };
 	private List<MedicamentDao> med_List = new ArrayList<MedicamentDao>();
 	private static DC_Medicament instance = null;
-
 	
 	public static DC_Medicament getInstance(List<MedicamentDao> med_List){
 		if (instance == null){

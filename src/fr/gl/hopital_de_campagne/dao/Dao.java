@@ -3,13 +3,10 @@ package fr.gl.hopital_de_campagne.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.gl.hopital_de_campagne.dao.*;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-import javax.persistence.TypedQuery;
 
 public class Dao {
 
@@ -24,36 +21,43 @@ public class Dao {
 	}
 		
 		// Getters. Retournent les listes d'objets.
+		@SuppressWarnings("unchecked")
 		public List<EquipementDao> getAllEquipementDao() {
 			Query query = em.createNativeQuery("select * from EquipementDao", fr.gl.hopital_de_campagne.dao.EquipementDao.class);
 			return query.getResultList();
 		}
 		
+		@SuppressWarnings("unchecked")
 		public List<AvionDao> getAllAvionDao() {
 			Query query = em.createNativeQuery("select * from AvionDao", fr.gl.hopital_de_campagne.dao.AvionDao.class);
 			return query.getResultList();
 		}
 		
+		@SuppressWarnings("unchecked")
 		public List<ConfigurationDao> getAllConfigurationDao() {
 			Query query = em.createNativeQuery("select * from ConfigurationDao", fr.gl.hopital_de_campagne.dao.ConfigurationDao.class);
 			return query.getResultList();
 		}
 
+		@SuppressWarnings("unchecked")
 		public List<ContainerDao> getAllContainerDao() {
 			Query query = em.createNativeQuery("select * from ContainerDao", fr.gl.hopital_de_campagne.dao.ContainerDao.class);
 			return query.getResultList();
 		}
 		
+		@SuppressWarnings("unchecked")
 		public List<Container_containsDao> getAllContainer_containsDao() {
 			Query query = em.createNativeQuery("select * from Container_containsDao", fr.gl.hopital_de_campagne.dao.Container_containsDao.class);
 			return query.getResultList();
 		}
 		
+		@SuppressWarnings("unchecked")
 		public List<MedicamentDao> getAllMedicamentDao() {
 			Query query = em.createNativeQuery("select * from MedicamentDao", fr.gl.hopital_de_campagne.dao.MedicamentDao.class);
 			return query.getResultList();
 		}
 		
+		@SuppressWarnings("unchecked")
 		public List<SecteurDao> getAllSecteurDao() {
 			Query query = em.createNativeQuery("select * from SecteurDao", fr.gl.hopital_de_campagne.dao.SecteurDao.class);
 			return query.getResultList();

@@ -15,6 +15,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
+import fr.gl.hopital_de_campagne.metier.DisplayableClass;
+
+@SuppressWarnings("serial")
 public class PaneModifyElement extends JPanel {
 	
 	private List<JTextField> champs;
@@ -71,7 +74,8 @@ public class PaneModifyElement extends JPanel {
 		int i=0;
 		if(champs.size()==0) return;
 		for(Object field:fields) {
-			champs.get(i).setText(field.toString());
+			if(field!=null)champs.get(i).setText(field.toString());
+			else champs.get(i).setText("ERREUR");
 			i++;
 		}
 	}
