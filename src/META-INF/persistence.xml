@@ -13,9 +13,9 @@
     <properties>
       <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
       <property name="javax.persistence.jdbc.url"
-        value="jdbc:h2:tcp://localhost/~/test" />
+        value="jdbc:h2:./src/BD/BDH2" />
       <property name="javax.persistence.jdbc.user" value="sa" />
-      <property name="javax.persistence.jdbc.password" value="sa" />
+      <property name="javax.persistence.jdbc.password" value="" />
 
       <!-- EclipseLink should create the database schema automatically -->
       <property name="eclipselink.ddl-generation" value="create-tables" />

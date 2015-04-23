@@ -9,6 +9,8 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.List;
 
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.swing.JFrame;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -44,10 +46,30 @@ public class Controleur implements ActionListener, KeyListener, PropertyChangeLi
 	}
 	
 	private Controleur() {
+		initialiserH2();
 		initialiserWindow();
 		dao = new Dao();
 	}
 	
+	public void initialiserH2(){
+//		String nomDriver = "org.h2.Driver";
+//		try{
+//		    Class.forName(nomDriver); 
+//		}catch(ClassNotFoundException cnfe){
+//		}
+//		
+//		try{
+//			String url = "jdbc:h2:./src/BD/BDH2;IFEXISTS=TRUE";
+//			connection = DriverManager.getConnection(url,login,password);
+//			connection.close();
+//			BDExistante = true;
+//
+//			System.out.println ("Base de données H2 détectée...");
+//		} catch(SQLException sqle) {
+//		}
+//		
+		
+	}
 	public void initialiserWindow(){
 		mainWindow = new JFrame("Hôpital de campagne");
 		mainWindow.setSize(800, 600);

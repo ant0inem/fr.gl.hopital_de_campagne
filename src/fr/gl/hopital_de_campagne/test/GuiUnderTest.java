@@ -1,5 +1,8 @@
 package fr.gl.hopital_de_campagne.test;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -12,7 +15,10 @@ import fr.gl.hopital_de_campagne.dao.*;
 
 public class GuiUnderTest {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+	//	Class.forName("org.h2.Driver");
+		//Connection conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+		
 		test3();
 	}
 		
