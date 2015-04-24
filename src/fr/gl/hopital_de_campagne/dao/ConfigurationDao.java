@@ -1,5 +1,8 @@
 package fr.gl.hopital_de_campagne.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -15,21 +18,36 @@ public class ConfigurationDao {
 	private String dateRetour;
 	private String typeMission;
 
-	@OneToOne
-	@JoinColumn(name = "idContainer")
-	ContainerDao container;
-
-	public void setContainer(ContainerDao c) {
-		container = c;
-	}
-
-	public ContainerDao getContainer() {
-		return container;
-	}
+	@OneToMany
+	List<ContainerDao> containers;
 
 	@OneToOne
-	@JoinColumn(name = "idAvion")
 	AvionDao avion;
+	
+	public ConfigurationDao() {
+
+	}
+
+//	public ConfigurationDao(String avionName, String destination,
+//			String dateDepart, String dateRetour, String typeMission,
+//			ContainerDao container, AvionDao avion) {
+//		setAvionName(avionName);
+//		setDestination(destination);
+//		setDateDepart(dateDepart);
+//		setDateRetour(dateRetour);
+//		setTypeMission(typeMission);
+//		setContainer(container);
+//		setAvion(avion);
+//	}
+
+	public void setContainers(List<ContainerDao> c) {
+		containers = c;
+	}
+
+	public List<ContainerDao> getContainers() {
+		if(containers==null) containers = new ArrayList<ContainerDao>();
+		return containers;
+	}
 
 	public void setAvion(AvionDao a) {
 		avion = a;
@@ -85,22 +103,6 @@ public class ConfigurationDao {
 
 	public void setTypeMission(String typeMission) {
 		this.typeMission = typeMission;
-	}
-
-	public ConfigurationDao() {
-
-	}
-
-	public ConfigurationDao(String avionName, String destination,
-			String dateDepart, String dateRetour, String typeMission,
-			ContainerDao container, AvionDao avion) {
-		setAvionName(avionName);
-		setDestination(destination);
-		setDateDepart(dateDepart);
-		setDateRetour(dateRetour);
-		setTypeMission(typeMission);
-		setContainer(container);
-		setAvion(avion);
 	}
 
 }

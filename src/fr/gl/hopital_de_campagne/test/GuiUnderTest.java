@@ -22,10 +22,10 @@ public class GuiUnderTest {
 	}
 		
 	private static void test2() {
-		JFrame w = new JFrame();
-		w.setContentPane(new VueGestionChargement(Controleur.getInstance()));
-		w.setSize(800, 600);
-		w.setVisible(true);
+//		JFrame w = new JFrame();
+//		w.setContentPane(new VueGestionChargement(Controleur.getInstance()));
+//		w.setSize(800, 600);
+//		w.setVisible(true);
 		
 	}
 

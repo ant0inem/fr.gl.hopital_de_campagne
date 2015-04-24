@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import fr.gl.hopital_de_campagne.dao.ConfigurationDao;
 import fr.gl.hopital_de_campagne.dao.ContainerDao;
 import fr.gl.hopital_de_campagne.dao.Dao;
 import fr.gl.hopital_de_campagne.dao.SecteurDao;
@@ -27,6 +28,9 @@ public class Controleur implements ActionListener, KeyListener, PropertyChangeLi
 	
 	private JFrame mainWindow;
 	private DisplayableClass dc;
+	private DC_Container usedContainers;
+	private DC_Container unusedContainers;
+	private ConfigurationDao configurationEmbarquement;
 	private static Controleur instance = null;
 	private int vueActive = -1;
 	public static int VUE_ERREUR = -1;
@@ -65,7 +69,10 @@ public class Controleur implements ActionListener, KeyListener, PropertyChangeLi
 	}
 	
 	public void displayPreparePlane() {
-		vueGestionChargement = new VueGestionChargement(this);
+		configurationEmbarquement = new ConfigurationDao();
+		usedContainers = new DC_Container(configurationEmbarquement);
+		unusedContainers = DC_Container.getUnusedContainers(configurationEmbarquement, dao);
+		vueGestionChargement = new VueGestionChargement(this, dao, usedContainers, unusedContainers);
 		mainWindow.setContentPane(vueGestionChargement);
 		mainWindow.revalidate();
 		vueActive = Controleur.VUE_GESTION_CHARGEMENT;
@@ -123,22 +130,47 @@ public class Controleur implements ActionListener, KeyListener, PropertyChangeLi
 			}
 			break;
 			
+		case "embarquerColis":
+			if (vueGestionChargement.getSelectedUnusedContainer() != null) {
+				this.usedContainers.addContainer(vueGestionChargement
+						.getSelectedUnusedContainer());
+				this.unusedContainers.removeContainer(vueGestionChargement
+						.getSelectedUnusedContainer());
+				vueGestionChargement.revalidate();
+			}
+			break;
+
+		case "retirerColis":
+			if (vueGestionChargement.getSelectedUsedContainer() != null) {
+				this.unusedContainers.addContainer(vueGestionChargement
+						.getSelectedUsedContainer());
+				this.usedContainers.removeContainer(vueGestionChargement
+						.getSelectedUsedContainer());
+				vueGestionChargement.revalidate();
+			}
+			break;
+			
 		case "viewContainer" :
-			dc = DC_Container.getInstance(dao.getAllContainerDao());
+//			dc = DC_Container.getInstance(dao.getAllContainerDao());
+			dc = null; //flush
+			dc = new DC_Container(dao.getAllContainerDao());
 			this.displayContent(dc);
 			break;
 			
 		case "viewMed" :
+			dc = null; //flush
 			dc = DC_Medicament.getInstance(dao.getAllMedicamentDao());
 			this.displayContent(dc);
 			break;
 			
 		case "viewObject" :
+			dc = null; //flush
 			dc = DC_Equipement.getInstance(dao.getAllEquipementDao());
 			this.displayContent(dc);
 			break;
 			
 		case "KFC" :
+			dc = null; //flush
 			dc = DC_KFC.getInstance();
 			this.displayContent(dc);
 			break;

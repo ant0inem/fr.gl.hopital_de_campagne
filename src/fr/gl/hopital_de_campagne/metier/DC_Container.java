@@ -3,6 +3,7 @@ package fr.gl.hopital_de_campagne.metier;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.gl.hopital_de_campagne.dao.ConfigurationDao;
 import fr.gl.hopital_de_campagne.dao.ContainerDao;
 import fr.gl.hopital_de_campagne.dao.Dao;
 import fr.gl.hopital_de_campagne.dao.SecteurDao;
@@ -13,24 +14,36 @@ public class DC_Container implements DisplayableClass {
 			"Désignation génerique du colis", "long", "larg", "haut",
 			"volume (m3)", "Poids (kg)", "Observations" };
 	private List<ContainerDao> cont_List = new ArrayList<ContainerDao>();
-	private static DC_Container instance = null;
+//	private static DC_Container instance = null;
+//
+//	public static DC_Container getInstance(List<ContainerDao> cont_List) {
+//		if (instance == null) {
+//			instance = new DC_Container(cont_List);
+//		}
+//		return instance;
+//	}
 
-	public static DC_Container getInstance(List<ContainerDao> cont_List) {
-		if (instance == null) {
-			instance = new DC_Container(cont_List);
-		}
-		return instance;
-	}
+//	public static DC_Container getInstance() {
+//		if (instance == null) {
+//			instance = new DC_Container(null);
+//		}
+//		return instance;
+//	}
 
-	public static DC_Container getInstance() {
-		if (instance == null) {
-			instance = new DC_Container(null);
-		}
-		return instance;
-	}
-
-	private DC_Container(List<ContainerDao> cont_List) {
+	public DC_Container(List<ContainerDao> cont_List) {
 		setMed_List(cont_List);
+	}
+	
+	public DC_Container(ConfigurationDao configuration) {
+		setMed_List(configuration.getContainers());
+	}
+	
+	public static DC_Container getUnusedContainers(ConfigurationDao configuration, Dao dao) {
+		List<ContainerDao> unusedContainers = dao.getAllContainerDao();
+		for(ContainerDao usedContainer: configuration.getContainers()) {
+			unusedContainers.remove(usedContainer);
+		}
+		return new DC_Container(unusedContainers);	
 	}
 
 	public List<ContainerDao> getCont_List() {
@@ -187,7 +200,16 @@ public class DC_Container implements DisplayableClass {
 
 	@Override
 	public Object getObject(int index) {
+		if(index==-1) return null;
 		return this.getCont_List().get(index);
+	}
+	
+	public void addContainer(ContainerDao container) {
+		this.getCont_List().add(container);
+	}
+	
+	public void removeContainer(ContainerDao container) {
+		this.getCont_List().remove(container);
 	}
 
 }

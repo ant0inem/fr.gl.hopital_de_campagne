@@ -56,7 +56,7 @@ public class _Main_TestDao {
 			
 			/* Clés étrangères */
 			cfg.setAvion(a);
-			cfg.setContainer(c);
+//			cfg.setContainer(c);
 			
 //			c.setSecteur(s);
 			
