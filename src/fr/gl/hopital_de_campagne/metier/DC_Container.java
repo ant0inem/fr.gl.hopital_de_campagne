@@ -112,7 +112,6 @@ public class DC_Container implements DisplayableClass {
 	@Override
 	public int getAttributType(int i) {
 		int type = 0;
-		// 1 = int, 2 = String
 		switch (i) {
 		case 0:
 			type = DisplayableClass.INTEGER_TYPE;

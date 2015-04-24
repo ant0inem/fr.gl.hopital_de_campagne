@@ -21,6 +21,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 import fr.gl.hopital_de_campagne.controleur.Controleur;
+import fr.gl.hopital_de_campagne.dao.ContainerDao;
 import fr.gl.hopital_de_campagne.dao.SecteurDao;
 import fr.gl.hopital_de_campagne.metier.DisplayableClass;
 
@@ -69,6 +70,9 @@ public class PaneModifyElement extends JPanel {
 			else if(o.getAttributType(i)==DisplayableClass.SECTEUR_TYPE) {
 				champ = new JComboBox<SecteurDao>((Vector<SecteurDao>) Controleur.getInstance().getAllSecteurDao());
 			}
+			else if(o.getAttributType(i)==DisplayableClass.CONTAINER_TYPE) {
+				champ = new JComboBox<ContainerDao>((Vector<ContainerDao>) Controleur.getInstance().getAllContainerDao());
+			}
 			champs.add(champ);
 			couplePane.add(champ);
 			couplePane.setMinimumSize(new Dimension(200,40));
@@ -107,7 +111,9 @@ public class PaneModifyElement extends JPanel {
 				((JFormattedTextField) champs.get(i)).setValue(field);
 			}
 			else if(champs.get(i) instanceof JTextField) {
-				((JTextField) champs.get(i)).setText(field.toString());;
+				String abc = "Erreur";
+				if(field!=null) abc = field.toString();
+				((JTextField) champs.get(i)).setText(abc);
 			}
 			else if(champs.get(i) instanceof JComboBox<?>) {
 				((JComboBox<?>) champs.get(i)).setSelectedItem(field);

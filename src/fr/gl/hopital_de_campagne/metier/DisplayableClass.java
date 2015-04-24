@@ -16,6 +16,7 @@ public interface DisplayableClass {
 	public static int STRING_TYPE = 0;
 	public static int INTEGER_TYPE = 1;
 	public static int SECTEUR_TYPE = 2;
+	public static int CONTAINER_TYPE = 3;
 
 	
 	/**

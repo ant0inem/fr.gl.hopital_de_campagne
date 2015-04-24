@@ -16,12 +16,12 @@ public class MenuGUI {
     
     public void buildMenu(ActionListener l) {
 
-        JMenu menu1 = new JMenu("Déconnection");
-
-        JMenuItem closeProg = new JMenuItem("Arrêter le logiciel");
-        closeProg.setActionCommand("closeProg");
-        closeProg.addActionListener(l);
-        menu1.add(closeProg);
+//        JMenu menu1 = new JMenu("Déconnection");
+//
+//        JMenuItem closeProg = new JMenuItem("Arrêter le logiciel");
+//        closeProg.setActionCommand("closeProg");
+//        closeProg.addActionListener(l);
+//        menu1.add(closeProg);
         
         /*
         JMenuItem logOutUser = new JMenuItem("Déconnection de l'utilisateur");
@@ -43,10 +43,10 @@ public class MenuGUI {
         viewContainer.addActionListener(l);
         menu2.add(viewContainer);
 
-        JMenuItem viewMed = new JMenuItem("Afficher les médicaments");
-        viewMed.setActionCommand("viewMed");
-        viewMed.addActionListener(l);
-        menu2.add(viewMed);
+//        JMenuItem viewMed = new JMenuItem("Afficher les médicaments");
+//        viewMed.setActionCommand("viewMed");
+//        viewMed.addActionListener(l);
+//        menu2.add(viewMed);
         
         JMenuItem viewObject = new JMenuItem("Afficher les équipements");
         viewObject.setActionCommand("viewObject");
@@ -79,7 +79,7 @@ public class MenuGUI {
         viewPreparePlane.addActionListener(l);
         menu4.add(viewPreparePlane);
         
-        menuBar.add(menu1);
+//        menuBar.add(menu1);
         menuBar.add(menu2);
 //        menuBar.add(menu3);
         menuBar.add(menu4);

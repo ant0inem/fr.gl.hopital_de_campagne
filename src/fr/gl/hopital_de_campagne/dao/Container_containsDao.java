@@ -11,6 +11,24 @@ public class Container_containsDao {
 
 	private int quantité;
 
+	@OneToOne(mappedBy="equipementEmplacement")
+	private EquipementDao equipement;
+
+	@OneToOne
+	ContainerDao container;
+
+	public Container_containsDao() {
+
+	}
+
+	public Container_containsDao(int quantité, ContainerDao container,
+			EquipementDao equipement) {
+		setQuantité(quantité);
+		setContainer(container); // Container_Secteur_idSecteur ne sert à rien,
+									// pas besoin de le rajouter
+		setEquipement(equipement); // (contrairement à ce que le pdf indique).
+	}
+
 	public int getQuantité() {
 		return quantité;
 	}
@@ -27,9 +45,6 @@ public class Container_containsDao {
 		this.idContainer_contains = idContainer_contains;
 	}
 
-	@OneToOne
-	ContainerDao container;
-
 	public void setContainer(ContainerDao c) {
 		container = c;
 	}
@@ -37,21 +52,6 @@ public class Container_containsDao {
 	public ContainerDao getContainer() {
 		return container;
 	}
-
-	public Container_containsDao() {
-
-	}
-
-	public Container_containsDao(int quantité, ContainerDao container,
-			EquipementDao equipement) {
-		setQuantité(quantité);
-		setContainer(container); // Container_Secteur_idSecteur ne sert à rien,
-									// pas besoin de le rajouter
-		setEquipement(equipement); // (contrairement à ce que le pdf indique).
-	}
-
-	@OneToOne
-	private EquipementDao equipement;
 
 	public void setEquipement(EquipementDao equipement) {
 		this.equipement = equipement;

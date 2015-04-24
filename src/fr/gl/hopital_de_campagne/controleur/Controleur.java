@@ -167,4 +167,8 @@ public class Controleur implements ActionListener, KeyListener, PropertyChangeLi
 		return dao.getAllSecteurDao();
 	}
 
+	public List<ContainerDao> getAllContainerDao() {
+		return dao.getAllContainerDao();
+	}
+
 }

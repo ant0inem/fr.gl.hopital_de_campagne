@@ -35,7 +35,7 @@ public class _Main_TestDao {
 			e.setEquipementDescription("Ceci est une description");
 			e.setEquipementWeight(3);
 			e.setEquipementType("Youuuh");
-			e.setEquipementNatureColis("Empoisonné");
+//			e.setEquipementNatureColis("Empoisonné");
 			e.setEquipementValue(9999);
 			es.add(e);
 			

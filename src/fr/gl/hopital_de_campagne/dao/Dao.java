@@ -76,11 +76,11 @@ public class Dao {
 			em.getTransaction().commit();
 		}
 		
-		public void addContainer_contains(Container_containsDao container_contains) {
-			em.getTransaction().begin();
-			em.persist(container_contains);			
-			em.getTransaction().commit();
-		}
+//		public void addContainer_contains(Container_containsDao container_contains) {
+//			em.getTransaction().begin();
+//			em.persist(container_contains);			
+//			em.getTransaction().commit();
+//		}
 		
 		public void addContainer(ContainerDao container) {
 			em.getTransaction().begin();
@@ -88,8 +88,9 @@ public class Dao {
 			em.getTransaction().commit();
 		}
 		
-		public void addEquipement(EquipementDao equipement) {
+		public void addEquipement(EquipementDao equipement, Container_containsDao container_contains) {
 			em.getTransaction().begin();
+			em.persist(container_contains);	
 			em.persist(equipement);			
 			em.getTransaction().commit();
 		}
@@ -180,16 +181,16 @@ public class Dao {
 		dao.addContainer(container);
 		
 		
-		EquipementDao equipement = new EquipementDao(2,3,4,"EQUIPEEEEEMENT","Description",6,"Type","Nature",1000);
-		dao.addEquipement(equipement);
-		ArrayList<EquipementDao> equipements = new ArrayList<EquipementDao>();
-		equipements.add(equipement);
+//		EquipementDao equipement = new EquipementDao(2,3,4,"EQUIPEEEEEMENT","Description",6,"Type",1000);
+//		dao.addEquipement(equipement);
+//		ArrayList<EquipementDao> equipements = new ArrayList<EquipementDao>();
+//		equipements.add(equipement);
 		
-		Container_containsDao container_contains = new Container_containsDao(500,container,equipement);
-		dao.addContainer_contains(container_contains);
-		
-		MedicamentDao medicament = new MedicamentDao("Doliprane", "Test", 15, "1 par jour", "Test", "Teeest", "Lot 52",equipement);
-		dao.addMedicament(medicament);
+//		Container_containsDao container_contains = new Container_containsDao(500,container,equipement);
+//		dao.addContainer_contains(container_contains);
+//		
+//		MedicamentDao medicament = new MedicamentDao("Doliprane", "Test", 15, "1 par jour", "Test", "Teeest", "Lot 52",equipement);
+//		dao.addMedicament(medicament);
 		
 		
 		 

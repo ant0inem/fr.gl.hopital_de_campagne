@@ -15,8 +15,29 @@ public class EquipementDao {
 	private String equipementDescription;
 	private int equipementWeight;
 	private String equipementType;
-	private String equipementNatureColis;
 	private int equipementValue;
+	@OneToOne
+	private Container_containsDao equipementEmplacement;
+
+	public EquipementDao() {
+
+	}
+
+	public EquipementDao(int equipementLength, int equipementWidth,
+			int equipementHeight, String equipementNom,
+			String equipementDescription, int equipementWeight,
+			String equipementType,
+			int equipementValue) {
+
+		setEquipementLength(equipementLength);
+		setEquipementWidth(equipementWidth);
+		setEquipementHeight(equipementHeight);
+		setEquipementNom(equipementNom);
+		setEquipementDescription(equipementDescription);
+		setEquipementWeight(equipementWeight);
+		setEquipementType(equipementType);
+		setEquipementValue(equipementValue);
+	}
 
 	public int getIdEquipement() {
 		return idEquipement;
@@ -82,14 +103,6 @@ public class EquipementDao {
 		this.equipementType = equipementType;
 	}
 
-	public String getEquipementNatureColis() {
-		return equipementNatureColis;
-	}
-
-	public void setEquipementNatureColis(String equipementNatureColis) {
-		this.equipementNatureColis = equipementNatureColis;
-	}
-
 	public int getEquipementValue() {
 		return equipementValue;
 	}
@@ -98,25 +111,12 @@ public class EquipementDao {
 		this.equipementValue = equipementValue;
 	}
 
-	public EquipementDao() {
-
+	public Container_containsDao getEquipementEmplacement() {
+		return equipementEmplacement;
 	}
 
-	public EquipementDao(int equipementLength, int equipementWidth,
-			int equipementHeight, String equipementNom,
-			String equipementDescription, int equipementWeight,
-			String equipementType, String equipementNatureColis,
-			int equipementValue) {
-
-		setEquipementLength(equipementLength);
-		setEquipementWidth(equipementWidth);
-		setEquipementHeight(equipementHeight);
-		setEquipementNom(equipementNom);
-		setEquipementDescription(equipementDescription);
-		setEquipementWeight(equipementWeight);
-		setEquipementType(equipementType);
-		setEquipementNatureColis(equipementNatureColis);
-		setEquipementValue(equipementValue);
+	public void setEquipementEmplacement(Container_containsDao equipementEmplacement) {
+		this.equipementEmplacement = equipementEmplacement;
 	}
 
 }

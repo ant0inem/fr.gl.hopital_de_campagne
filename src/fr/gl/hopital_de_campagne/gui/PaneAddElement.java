@@ -19,7 +19,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+
 import fr.gl.hopital_de_campagne.controleur.Controleur;
+import fr.gl.hopital_de_campagne.dao.ContainerDao;
 import fr.gl.hopital_de_campagne.dao.SecteurDao;
 import fr.gl.hopital_de_campagne.metier.DisplayableClass;
 
@@ -63,6 +65,9 @@ public class PaneAddElement extends JPanel {
 			}
 			else if(o.getAttributType(i)==DisplayableClass.SECTEUR_TYPE) {
 				champ = new JComboBox<SecteurDao>((Vector<SecteurDao>) Controleur.getInstance().getAllSecteurDao());
+			}
+			else if(o.getAttributType(i)==DisplayableClass.CONTAINER_TYPE) {
+				champ = new JComboBox<ContainerDao>((Vector<ContainerDao>) Controleur.getInstance().getAllContainerDao());
 			}
 			
 			champs.add(champ);

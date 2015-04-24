@@ -3,15 +3,16 @@ package fr.gl.hopital_de_campagne.metier;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.gl.hopital_de_campagne.dao.ContainerDao;
+import fr.gl.hopital_de_campagne.dao.Container_containsDao;
 import fr.gl.hopital_de_campagne.dao.Dao;
 import fr.gl.hopital_de_campagne.dao.EquipementDao;
 
 public class DC_Equipement implements DisplayableClass {
 
-	private String[] columnNames = { "idEquipement", "equipementLength",
-			"equipementWidth", "equipementHeight", "equipementNom",
-			"equipementDescription", "equipementWeight", "equipementType",
-			"equipementNatureColis", "equipementValue" };
+	private String[] columnNames = { "ID", "Désignation",
+			"Commentaire", "Type",
+			"N° du colis", "Quantité" };
 	private List<EquipementDao> eq_List = new ArrayList<EquipementDao>();
 	
 	private static DC_Equipement instance = null;
@@ -59,31 +60,23 @@ public class DC_Equipement implements DisplayableClass {
 			o = eq.getIdEquipement();
 			break;
 		case 1:
-			o = eq.getEquipementLength();
-			break;
-		case 2:
-			o = eq.getEquipementWidth();
-			break;
-		case 3:
-			o = eq.getEquipementHeight();
-			break;
-		case 4:
 			o = eq.getEquipementNom();
 			break;
-		case 5:
+		case 2:
 			o = eq.getEquipementDescription();
 			break;
-		case 6:
-			o = eq.getEquipementWeight();
-			break;
-		case 7:
+		case 3:
 			o = eq.getEquipementType();
 			break;
-		case 8:
-			o = eq.getEquipementNatureColis();
+		case 4:
+			if(eq.getEquipementEmplacement()!=null) {
+				o = eq.getEquipementEmplacement().getContainer();
+			}
 			break;
-		case 9:
-			o = eq.getEquipementValue();
+		case 5:
+			if(eq.getEquipementEmplacement()!=null) {
+				o = eq.getEquipementEmplacement().getQuantité();
+			}
 			break;
 		}
 
@@ -100,18 +93,22 @@ public class DC_Equipement implements DisplayableClass {
 		int type = 0;
 		switch (i) {
 		case 0:
+			type = DisplayableClass.INTEGER_TYPE;
+			break;
 		case 1:
+			type = DisplayableClass.STRING_TYPE;
+			break;
 		case 2:
+			type = DisplayableClass.STRING_TYPE;
+			break;
 		case 3:
-		case 6:
-		case 9:
-			type = 1;
+			type = DisplayableClass.STRING_TYPE;
 			break;
 		case 4:
+			type = DisplayableClass.CONTAINER_TYPE;
+			break;
 		case 5:
-		case 7:
-		case 8:
-			type = 2;
+			type = DisplayableClass.INTEGER_TYPE;
 			break;
 		}
 		return type;
@@ -131,7 +128,23 @@ public class DC_Equipement implements DisplayableClass {
 
 	@Override
 	public void ajouter_Elt_BdD(List<Object> list, Dao dao) {
+		EquipementDao equipement = new EquipementDao();
+		Container_containsDao emplacement = new Container_containsDao();
 		
+		if(list.size()==6) {
+			equipement.setEquipementNom((String) list.get(1));
+			equipement.setEquipementDescription((String) list.get(2));
+			equipement.setEquipementType((String) list.get(3));
+			equipement.setEquipementEmplacement(emplacement);
+			
+			emplacement.setContainer((ContainerDao) list.get(4));
+			emplacement.setQuantité(Dao.objectToInteger(list.get(5)));
+			emplacement.setEquipement(equipement);
+		}
+
+//		dao.addContainer_contains(emplacement);
+		dao.addEquipement(equipement, emplacement);
+		this.getEq_List().add(equipement);
 	}
 
 	@Override

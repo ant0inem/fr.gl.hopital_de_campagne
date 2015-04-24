@@ -20,6 +20,37 @@ public class ContainerDao {
 	private String containerObservation;
 	private String containerModule;
 	private String containerPriority;
+	private String equipementNatureColis;
+
+	public ContainerDao() {
+
+	}
+
+	public ContainerDao(int containerNumber, int containerLength,
+			int containerWidth, int containerHeight, int containerVolumeMax,
+			int containerVolumeUsed, int containerWeightMax,
+			int containerWeightUsed, String containerDesignationGenerique,
+			String containerObservation, String containerModule,
+			String containerPriority, SecteurDao secteur) {
+		setContainerNumber(containerNumber);
+		setContainerLength(containerLength);
+		setContainerWidth(containerWidth);
+		setContainerHeight(containerHeight);
+		setContainerVolumeMax(containerVolumeMax);
+		setContainerVolumeUsed(containerVolumeUsed);
+		setContainerWeightMax(containerWeightMax);
+		setContainerWeightUsed(containerWeightUsed);
+		setContainerDesignationGenerique(containerDesignationGenerique);
+		setContainerObservation(containerObservation);
+		setContainerModule(containerModule);
+		setContainerPriority(containerPriority);
+		setSecteur(secteur);
+	}
+	
+	@Override
+	public String toString() {
+		return "" + containerNumber;
+	}
 
 	public int getIdContainer() {
 		return idContainer;
@@ -138,29 +169,12 @@ public class ContainerDao {
 		return secteur;
 	}
 
-	public ContainerDao() {
-
+	public String getEquipementNatureColis() {
+		return equipementNatureColis;
 	}
 
-	public ContainerDao(int containerNumber, int containerLength,
-			int containerWidth, int containerHeight, int containerVolumeMax,
-			int containerVolumeUsed, int containerWeightMax,
-			int containerWeightUsed, String containerDesignationGenerique,
-			String containerObservation, String containerModule,
-			String containerPriority, SecteurDao secteur) {
-		setContainerNumber(containerNumber);
-		setContainerLength(containerLength);
-		setContainerWidth(containerWidth);
-		setContainerHeight(containerHeight);
-		setContainerVolumeMax(containerVolumeMax);
-		setContainerVolumeUsed(containerVolumeUsed);
-		setContainerWeightMax(containerWeightMax);
-		setContainerWeightUsed(containerWeightUsed);
-		setContainerDesignationGenerique(containerDesignationGenerique);
-		setContainerObservation(containerObservation);
-		setContainerModule(containerModule);
-		setContainerPriority(containerPriority);
-		setSecteur(secteur);
+	public void setEquipementNatureColis(String equipementNatureColis) {
+		this.equipementNatureColis = equipementNatureColis;
 	}
 
 }

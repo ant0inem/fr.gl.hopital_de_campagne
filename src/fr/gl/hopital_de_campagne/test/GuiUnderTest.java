@@ -36,15 +36,15 @@ public class GuiUnderTest {
 //		
 //		DisplayableClass content = new SampleDisplayableClass();
 		
-		EquipementDao eq1 = new EquipementDao(5, 4, 2, "eq1", "test",
-				 42, "type", "tout", 0);
-		EquipementDao eq2 = new EquipementDao(5, 4, 2, "eq2", "test",
-				 42, "type", "tout", 0);
-		ArrayList<EquipementDao> aL_eq = new ArrayList<EquipementDao>();
-		aL_eq.add(eq1);
-		aL_eq.add(eq2);
-		
-		DisplayableClass content = DC_Equipement.getInstance(aL_eq);
+//		EquipementDao eq1 = new EquipementDao(5, 4, 2, "eq1", "test",
+//				 42, "type", "tout", 0);
+//		EquipementDao eq2 = new EquipementDao(5, 4, 2, "eq2", "test",
+//				 42, "type", "tout", 0);
+//		ArrayList<EquipementDao> aL_eq = new ArrayList<EquipementDao>();
+//		aL_eq.add(eq1);
+//		aL_eq.add(eq2);
+//		
+//		DisplayableClass content = DC_Equipement.getInstance(aL_eq);
 //		Table table = new MyTable(content);
 //		
 //		JPanel pane = new JPanel();
@@ -57,9 +57,9 @@ public class GuiUnderTest {
 //		w.setContentPane(table.getTable());
 //		w.setSize(800, 600);
 //		w.setVisible(true);
-		
-		Controleur c = Controleur.getInstance();
-		c.displayContent(content);
+//		
+//		Controleur c = Controleur.getInstance();
+//		c.displayContent(content);
 	}
 	
 	public static void test3() {
