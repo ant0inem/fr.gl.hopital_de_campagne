@@ -55,10 +55,11 @@ public class Controleur implements ActionListener, KeyListener, PropertyChangeLi
 	public void initialiserWindow(){
 		mainWindow = new JFrame("Hôpital de campagne");
 		mainWindow.setSize(800, 600);
-		mainWindow.setVisible(true);
+		
 		mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		mainWindow.setJMenuBar((new MenuGUI(this)).getMenuBar());
+		mainWindow.setVisible(true);
 	}
 	
 	public void displayContent(DisplayableClass o) {
