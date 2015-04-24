@@ -120,11 +120,11 @@ public class Dao {
 			em.getTransaction().commit();
 		}
 		
-		public void deleteContainer_contains(Container_containsDao container_contains) {
-			em.getTransaction().begin();
-			em.remove(container_contains);			
-			em.getTransaction().commit();
-		}
+//		public void deleteContainer_contains(Container_containsDao container_contains) {
+//			em.getTransaction().begin();
+//			em.remove(container_contains);			
+//			em.getTransaction().commit();
+//		}
 		
 		public void deleteContainer(ContainerDao container) {
 			em.getTransaction().begin();
@@ -134,6 +134,7 @@ public class Dao {
 		
 		public void deleteEquipement(EquipementDao equipement) {
 			em.getTransaction().begin();
+			em.remove(equipement.getEquipementEmplacement());
 			em.remove(equipement);			
 			em.getTransaction().commit();
 		}
@@ -165,6 +166,20 @@ public class Dao {
 				container.setContainerWeightMax(objectToInteger(list.get(9)));
 				container.setContainerObservation((String) list.get(10));
 			}		
+			em.getTransaction().commit();
+		}
+		
+		public void updateEquipement(EquipementDao equipement, List<Object> list) {
+			em.getTransaction().begin();
+			
+			if(list.size()==6) {
+				equipement.setEquipementNom((String) list.get(1));
+				equipement.setEquipementDescription((String) list.get(2));
+				equipement.setEquipementType((String) list.get(3));
+				
+				equipement.getEquipementEmplacement().setContainer((ContainerDao) list.get(4));
+				equipement.getEquipementEmplacement().setQuantité(Dao.objectToInteger(list.get(5)));
+			}
 			em.getTransaction().commit();
 		}
 		

@@ -142,14 +142,14 @@ public class DC_Equipement implements DisplayableClass {
 			emplacement.setEquipement(equipement);
 		}
 
-//		dao.addContainer_contains(emplacement);
 		dao.addEquipement(equipement, emplacement);
 		this.getEq_List().add(equipement);
 	}
 
 	@Override
 	public void supprimer_Elt_BdD(Object o, Dao dao) {
-		// TODO Auto-generated method stub
+		dao.deleteEquipement((EquipementDao) o);
+		this.getEq_List().remove(o);
 		
 	}
 	
@@ -160,7 +160,7 @@ public class DC_Equipement implements DisplayableClass {
 
 	@Override
 	public void modifier_Elt_BdD(Object object, List<Object> list, Dao dao) {
-		// TODO Auto-generated method stub
+		dao.updateEquipement((EquipementDao) object, list);
 		
 	}
 
