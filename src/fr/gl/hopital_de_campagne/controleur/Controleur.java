@@ -1,6 +1,7 @@
 package fr.gl.hopital_de_campagne.controleur;
 
 
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -13,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import fr.gl.hopital_de_campagne.dao.AvionDao;
 import fr.gl.hopital_de_campagne.dao.ConfigurationDao;
 import fr.gl.hopital_de_campagne.dao.ContainerDao;
 import fr.gl.hopital_de_campagne.dao.Dao;
@@ -55,10 +57,11 @@ public class Controleur implements ActionListener, KeyListener, PropertyChangeLi
 	public void initialiserWindow(){
 		mainWindow = new JFrame("Hôpital de campagne");
 		mainWindow.setSize(800, 600);
+		mainWindow.setMinimumSize(new Dimension(400,400));
 		mainWindow.setVisible(true);
 		mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
 		mainWindow.setJMenuBar((new MenuGUI(this)).getMenuBar());
+		mainWindow.revalidate();
 	}
 	
 	public void displayContent(DisplayableClass o) {
@@ -201,6 +204,10 @@ public class Controleur implements ActionListener, KeyListener, PropertyChangeLi
 
 	public List<ContainerDao> getAllContainerDao() {
 		return dao.getAllContainerDao();
+	}
+	
+	public List<AvionDao> getAllAvionDao() {
+		return dao.getAllAvionDao();
 	}
 
 }
