@@ -39,6 +39,38 @@ public class ConfigurationDao {
 //		setContainer(container);
 //		setAvion(avion);
 //	}
+	
+	public void addContainer(ContainerDao container) {
+		List<ContainerDao> containers = getContainers();
+		containers.add(container);
+		setContainers(containers);
+	}
+	
+	public void removeContainer(ContainerDao container) {
+		List<ContainerDao> containers = getContainers();
+		containers.remove(container);
+		setContainers(containers);
+	}
+	
+	public int getContainersNumber() {
+		return this.getContainers().size();
+	}
+	
+	public int getVolumeNecessary() {
+		int x = 0;
+		for(ContainerDao container:this.getContainers()) {
+			x+=container.getContainerVolumeMax();
+		}
+		return x;
+	}
+	
+	public int getWeightNecessary() {
+		int x = 0;
+		for(ContainerDao container:this.getContainers()) {
+			x+=container.getContainerWeightMax();
+		}
+		return x;
+	}
 
 	public void setContainers(List<ContainerDao> c) {
 		containers = c;

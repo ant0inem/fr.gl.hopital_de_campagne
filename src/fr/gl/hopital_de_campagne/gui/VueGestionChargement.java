@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import fr.gl.hopital_de_campagne.controleur.Controleur;
+import fr.gl.hopital_de_campagne.dao.AvionDao;
 import fr.gl.hopital_de_campagne.dao.ContainerDao;
 import fr.gl.hopital_de_campagne.dao.Dao;
 import fr.gl.hopital_de_campagne.metier.DC_Container;
@@ -70,7 +71,29 @@ public class VueGestionChargement extends JPanel {
 		if(tableUsedContainer!=null) tableUsedContainer.revalidate();
 		if(tableUnusedContainer!=null) tableUnusedContainer.revalidate();
 	}
+
+	public void setPlaneVolumeText(String planeVolumeText) {
+		pane1.setPlaneVolumeText(planeVolumeText);
+	}
+
+	public void setPlaneMaxLoad(String planeMaxLoad) {
+		pane1.setPlaneMaxLoad(planeMaxLoad);
+	}
+
+	public void setNumberContainerText(String numberContainerText) {
+		pane1.setNumberContainerText(numberContainerText);
+	}
 	
-//	public void set
+	public void setUsedVolumeText(String usedVolumeText) {
+		pane1.setUsedVolumeText(usedVolumeText);
+	}
+
+	public void setUsedWeightText(String usedWeightText) {
+		pane1.setUsedWeightText(usedWeightText);
+	}
+	
+	public AvionDao getCurrentSelectedPlane() {
+		return pane1.getCurrentSelectedPlane();
+	}
 	
 }

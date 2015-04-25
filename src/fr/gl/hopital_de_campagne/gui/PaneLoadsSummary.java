@@ -17,6 +17,13 @@ import fr.gl.hopital_de_campagne.dao.AvionDao;
 @SuppressWarnings("serial")
 public class PaneLoadsSummary extends JPanel {
 	
+	private JTextField planeVolumeField;
+	private JTextField planeMaxLoad;
+	private JTextField numberContainerField;
+	private JTextField usedVolumeField;
+	private JTextField usedWeightField;
+	private JComboBox<AvionDao> typesAvion;
+	
 	public PaneLoadsSummary (ActionListener l) {
 		BoxLayout mainLayout = new BoxLayout(this, BoxLayout.X_AXIS);
 		super.setLayout(mainLayout);
@@ -30,14 +37,16 @@ public class PaneLoadsSummary extends JPanel {
 		ligne1.setLayout(new BoxLayout(ligne1, BoxLayout.X_AXIS));
 		ligne1.add(new JLabel("Type d'avion :"));
 		ligne1.add(Box.createHorizontalGlue());
-		JComboBox<AvionDao> typesAvion = new JComboBox<AvionDao>((Vector<AvionDao>) Controleur.getInstance().getAllAvionDao());
+		typesAvion = new JComboBox<AvionDao>((Vector<AvionDao>) Controleur.getInstance().getAllAvionDao());
+		typesAvion.setActionCommand("choixAvion");
+		typesAvion.addActionListener(l);
 		ligne1.add(typesAvion);
 		
 		JPanel ligne2 = new JPanel(new BoxLayout(this, BoxLayout.X_AXIS));
 		ligne2.setLayout(new BoxLayout(ligne2, BoxLayout.X_AXIS));
 		ligne2.add(new JLabel("Volume disponible (en m3) :"));
 		ligne2.add(Box.createHorizontalStrut(20));
-		JTextField planeVolumeField = new JTextField();
+		planeVolumeField = new JTextField();
 		planeVolumeField.setEditable(false);
 		ligne2.add(planeVolumeField);
 		
@@ -45,7 +54,7 @@ public class PaneLoadsSummary extends JPanel {
 		ligne3.setLayout(new BoxLayout(ligne3, BoxLayout.X_AXIS));
 		ligne3.add(new JLabel("Capacité max (en tonnes) :"));
 		ligne3.add(Box.createHorizontalStrut(20));
-		JTextField planeMaxLoad = new JTextField();
+		planeMaxLoad = new JTextField();
 		planeMaxLoad.setEditable(false);
 		ligne3.add(planeMaxLoad);
 		
@@ -66,7 +75,7 @@ public class PaneLoadsSummary extends JPanel {
 		ligne4.setLayout(new BoxLayout(ligne4, BoxLayout.X_AXIS));
 		ligne4.add(new JLabel("Nombre de colis à charger :"));
 		ligne4.add(Box.createHorizontalStrut(20));
-		JTextField numberContainerField = new JTextField();
+		numberContainerField = new JTextField();
 		numberContainerField.setEditable(false);
 		ligne4.add(numberContainerField);
 		
@@ -74,7 +83,7 @@ public class PaneLoadsSummary extends JPanel {
 		ligne5.setLayout(new BoxLayout(ligne5, BoxLayout.X_AXIS));
 		ligne5.add(new JLabel("Volume nécessaire (en m3) :"));
 		ligne5.add(Box.createHorizontalStrut(20));
-		JTextField usedVolumeField = new JTextField();
+		usedVolumeField = new JTextField();
 		usedVolumeField.setEditable(false);
 		ligne5.add(usedVolumeField);
 		
@@ -82,7 +91,7 @@ public class PaneLoadsSummary extends JPanel {
 		ligne6.setLayout(new BoxLayout(ligne6, BoxLayout.X_AXIS));
 		ligne6.add(new JLabel("Poids nécessaire (n tonnes) :"));
 		ligne6.add(Box.createHorizontalStrut(20));
-		JTextField usedWeightField = new JTextField();
+		usedWeightField = new JTextField();
 		usedWeightField.setEditable(false);
 		ligne6.add(usedWeightField);
 
@@ -95,6 +104,30 @@ public class PaneLoadsSummary extends JPanel {
 		pane2.add(Box.createVerticalStrut(20));
 		add(pane2);
 		add(Box.createHorizontalStrut(30));
+	}
+
+	public void setPlaneVolumeText(String planeVolumeText) {
+		this.planeVolumeField.setText(planeVolumeText);
+	}
+
+	public void setPlaneMaxLoad(String planeMaxLoad) {
+		this.planeMaxLoad.setText(planeMaxLoad);
+	}
+
+	public void setNumberContainerText(String numberContainerText) {
+		this.numberContainerField.setText(numberContainerText);
+	}
+	
+	public void setUsedVolumeText(String usedVolumeText) {
+		this.usedVolumeField.setText(usedVolumeText);
+	}
+
+	public void setUsedWeightText(String usedWeightText) {
+		this.usedWeightField.setText(usedWeightText);
+	}
+	
+	public AvionDao getCurrentSelectedPlane() {
+		return (AvionDao) typesAvion.getSelectedItem();
 	}
 
 }
