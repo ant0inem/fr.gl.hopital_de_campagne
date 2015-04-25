@@ -6,11 +6,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.List;
 
 import javax.swing.JFrame;
+import javax.swing.WindowConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -50,8 +53,11 @@ public class Controleur implements ActionListener, KeyListener, PropertyChangeLi
 	}
 	
 	private Controleur() {
-		initialiserWindow();
+		// Placer l instanciation du dao avant la creation de la JFrame
+		// Permet d eviter que l utilisateur puisse faire des requetes
+		// alors que la base de donnees n est pas prete.
 		dao = new Dao();
+		initialiserWindow();
 	}
 	
 	public void initialiserWindow(){
@@ -59,7 +65,12 @@ public class Controleur implements ActionListener, KeyListener, PropertyChangeLi
 		mainWindow.setSize(800, 600);
 		mainWindow.setMinimumSize(new Dimension(400,400));
 		mainWindow.setVisible(true);
-		mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		mainWindow.addWindowListener(new WindowAdapter(){
+			   public void windowClosing(WindowEvent e){
+			   dao.closeDao();
+			   System.exit(0);
+			}}); 
+		mainWindow.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		mainWindow.setJMenuBar((new MenuGUI(this)).getMenuBar());
 		mainWindow.setVisible(true);
 	}
@@ -128,8 +139,10 @@ public class Controleur implements ActionListener, KeyListener, PropertyChangeLi
 			
 		case "supprimer_Elt_BdD" :
 			if(vueGestionBdD!=null) {
-				dc.supprimer_Elt_BdD(vueGestionBdD.getSelectedObject(), dao);;
-				vueGestionBdD.revalidate();
+				if(vueGestionBdD.getSelectedObject()!=null) {
+					dc.supprimer_Elt_BdD(vueGestionBdD.getSelectedObject(), dao);
+					vueGestionBdD.revalidate();
+				}
 			}
 			break;
 			
