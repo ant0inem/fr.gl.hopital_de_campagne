@@ -61,7 +61,7 @@ public class Controleur implements ActionListener, KeyListener, PropertyChangeLi
 		mainWindow.setVisible(true);
 		mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainWindow.setJMenuBar((new MenuGUI(this)).getMenuBar());
-		mainWindow.revalidate();
+		mainWindow.setVisible(true);
 	}
 	
 	public void displayContent(DisplayableClass o) {
