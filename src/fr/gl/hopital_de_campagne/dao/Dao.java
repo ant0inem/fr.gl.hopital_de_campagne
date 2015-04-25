@@ -184,39 +184,38 @@ public class Dao {
 		}
 		
 		
-	static public void main(String[] args) {
+	public static void main(String[] args) {
 		Dao dao = new Dao();
-		// Ici, on peut appeler des méthodes du dessus.
-		SecteurDao secteur = new SecteurDao("Nom du secteur", "New-York");
-		dao.addSecteur(secteur);
-		ArrayList<SecteurDao> secteurs = new ArrayList<SecteurDao>();
-		secteurs.add(secteur);
-		
-		ContainerDao container = new ContainerDao(1,2,3,4,5,6,7,8,"Désignation", "Observation", "Module", "Priorité",secteur);
-		dao.addContainer(container);
+		createSecteurDao(dao);
+		dao.closeDao();
 		
 		
-//		EquipementDao equipement = new EquipementDao(2,3,4,"EQUIPEEEEEMENT","Description",6,"Type",1000);
-//		dao.addEquipement(equipement);
-//		ArrayList<EquipementDao> equipements = new ArrayList<EquipementDao>();
-//		equipements.add(equipement);
-		
-//		Container_containsDao container_contains = new Container_containsDao(500,container,equipement);
-//		dao.addContainer_contains(container_contains);
-//		
-//		MedicamentDao medicament = new MedicamentDao("Doliprane", "Test", 15, "1 par jour", "Test", "Teeest", "Lot 52",equipement);
-//		dao.addMedicament(medicament);
-		
-		
-		 
-//		em.close();
-//		factory.close();
+	}
+	
+	public static void createSecteurDao(Dao dao) {
+		String[] names = { "NR", "(A) Stérilisation", "(B) Jonction blocs",
+				"(C)Bloc opératoire 1", "(D) Bloc opératoire 2", "(E) SPPI",
+				"(F) Réanimation", "(G) pole mere-enfant",
+				"(H) Jonction damho", "(I) Imagerie", "(J) Pharmacie-labo",
+				"(K) Stock pharmacie", "(L) Stock logistique",
+				"(M) stock administration", "(N) Douche patients",
+				"(O) Hébergement 1", "(P) Hébergement 2", "(Q) Hébergement 3" };
+		for(String name:names) {
+			SecteurDao secteur = new SecteurDao();
+			secteur.setSecteurName(name);
+			dao.addSecteur(secteur);
+		}
 	}
 	
 	public static int objectToInteger(Object o) {
 		if(o instanceof Integer) return (int) o;
 		if(o instanceof Long) return Integer.parseInt(Long.toString((long) o));
 		return 0;
+	}
+	
+	public void closeDao() {
+		em.close();
+		factory.close();
 	}
 
 }

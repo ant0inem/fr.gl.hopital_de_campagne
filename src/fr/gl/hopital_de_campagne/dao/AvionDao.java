@@ -17,7 +17,28 @@ public class AvionDao {
 	private int cargoHoldHeight;
 	private int usableVolume;
 	
+	public AvionDao() {
+
+	}
 	
+	public AvionDao(String typeAvion, int maxLoad,
+			int doorSizeWidth, int doorSizeHeight, int cargoHoldLength,
+			int cargoHoldWidth, int cargoHoldHeight, int usableVolume) {
+		setTypeAvion(typeAvion);
+		setMaxLoad(maxLoad);
+		setDoorSizeWidth(doorSizeWidth);
+		setDoorSizeHeight(doorSizeHeight);
+		setCargoHoldLength(cargoHoldLength);
+		setCargoHoldWidth(cargoHoldWidth);
+		setCargoHoldHeight(cargoHoldHeight);
+		setUsableVolume(usableVolume);
+	}
+	
+	@Override
+	public String toString() {
+		return "" + typeAvion;
+	}
+
 	public int getIdAvion() {
 		return idAvion;
 	}
@@ -72,24 +93,5 @@ public class AvionDao {
 	public void setUsableVolume(int usableVolume) {
 		this.usableVolume = usableVolume;
 	}
-	
-	public AvionDao() {
-
-	}
-	
-	public AvionDao(String typeAvion, int maxLoad,
-			int doorSizeWidth, int doorSizeHeight, int cargoHoldLength,
-			int cargoHoldWidth, int cargoHoldHeight, int usableVolume) {
-		setTypeAvion(typeAvion);
-		setMaxLoad(maxLoad);
-		setDoorSizeWidth(doorSizeWidth);
-		setDoorSizeHeight(doorSizeHeight);
-		setCargoHoldLength(cargoHoldLength);
-		setCargoHoldWidth(cargoHoldWidth);
-		setCargoHoldHeight(cargoHoldHeight);
-		setUsableVolume(usableVolume);
-	}
-	
-	
 	
 }

@@ -7,11 +7,9 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import fr.gl.hopital_de_campagne.controleur.Controleur;
-import fr.gl.hopital_de_campagne.dao.ConfigurationDao;
 import fr.gl.hopital_de_campagne.dao.ContainerDao;
 import fr.gl.hopital_de_campagne.dao.Dao;
 import fr.gl.hopital_de_campagne.metier.DC_Container;
-import fr.gl.hopital_de_campagne.test.SampleDisplayableClass;
 
 @SuppressWarnings("serial")
 public class VueGestionChargement extends JPanel {

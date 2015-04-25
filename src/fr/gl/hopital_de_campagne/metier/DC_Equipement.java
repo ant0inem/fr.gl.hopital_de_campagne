@@ -51,6 +51,7 @@ public class DC_Equipement implements DisplayableClass {
 
 	@Override
 	public Object getAttribut(int i, int j) {
+		if(i==-1) return null;
 		EquipementDao eq = getEq_List().get(i);
 		Object o = null;
 
