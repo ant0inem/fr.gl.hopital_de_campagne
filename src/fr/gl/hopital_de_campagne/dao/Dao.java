@@ -185,8 +185,12 @@ public class Dao {
 		
 		
 	public static void main(String[] args) {
+		// Attention cette methode genere un ensemble d avion
+		// et un ensemble de secteur en plus de ceux deja 
+		// genere.
 		Dao dao = new Dao();
 		createSecteurDao(dao);
+		createAvionDao(dao);
 		dao.closeDao();
 		
 		
@@ -204,6 +208,19 @@ public class Dao {
 			SecteurDao secteur = new SecteurDao();
 			secteur.setSecteurName(name);
 			dao.addSecteur(secteur);
+		}
+	}
+	
+	public static void createAvionDao(Dao dao) {
+		String[] types = {"Boeing B747-100", "Boeing B747-200", "Boeing B747-400", "Ilyushin IL76"};
+		int[] useableVolume = {724, 725, 764, 180};
+		int[] maxLoad = {96, 110, 120, 45};
+		for(int i=0; i<types.length; i++) {
+			AvionDao avion = new AvionDao();
+			avion.setTypeAvion(types[i]);
+			avion.setUsableVolume(useableVolume[i]);
+			avion.setMaxLoad(maxLoad[i]);
+			dao.addAvion(avion);
 		}
 	}
 	

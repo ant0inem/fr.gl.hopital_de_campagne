@@ -71,4 +71,6 @@ public class VueGestionChargement extends JPanel {
 		if(tableUnusedContainer!=null) tableUnusedContainer.revalidate();
 	}
 	
+//	public void set
+	
 }

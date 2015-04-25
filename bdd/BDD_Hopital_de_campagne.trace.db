@@ -1,24 +1,27 @@
-04-23 19:54:21 jdbc[2]: exception
+04-25 11:51:30 jdbc[2]: exception
 org.h2.jdbc.JdbcSQLException: Table "AVIONDAO" not found; SQL statement:
 SELECT IDAVION FROM AVIONDAO WHERE IDAVION <> IDAVION [42102-161]
-04-23 19:54:21 jdbc[2]: exception
+04-25 11:51:30 jdbc[2]: exception
 org.h2.jdbc.JdbcSQLException: Table "CONFIGURATIONDAO" not found; SQL statement:
 SELECT IDCONFIGURATION FROM CONFIGURATIONDAO WHERE IDCONFIGURATION <> IDCONFIGURATION [42102-161]
-04-23 19:54:21 jdbc[2]: exception
+04-25 11:51:30 jdbc[2]: exception
 org.h2.jdbc.JdbcSQLException: Table "CONTAINER_CONTAINSDAO" not found; SQL statement:
 SELECT IDCONTAINER_CONTAINS FROM CONTAINER_CONTAINSDAO WHERE IDCONTAINER_CONTAINS <> IDCONTAINER_CONTAINS [42102-161]
-04-23 19:54:21 jdbc[2]: exception
+04-25 11:51:30 jdbc[2]: exception
 org.h2.jdbc.JdbcSQLException: Table "CONTAINERDAO" not found; SQL statement:
 SELECT IDCONTAINER FROM CONTAINERDAO WHERE IDCONTAINER <> IDCONTAINER [42102-161]
-04-23 19:54:21 jdbc[2]: exception
+04-25 11:51:30 jdbc[2]: exception
 org.h2.jdbc.JdbcSQLException: Table "EQUIPEMENTDAO" not found; SQL statement:
 SELECT IDEQUIPEMENT FROM EQUIPEMENTDAO WHERE IDEQUIPEMENT <> IDEQUIPEMENT [42102-161]
-04-23 19:54:21 jdbc[2]: exception
+04-25 11:51:30 jdbc[2]: exception
 org.h2.jdbc.JdbcSQLException: Table "MEDICAMENTDAO" not found; SQL statement:
 SELECT IDMEDICAMENT FROM MEDICAMENTDAO WHERE IDMEDICAMENT <> IDMEDICAMENT [42102-161]
-04-23 19:54:21 jdbc[2]: exception
+04-25 11:51:30 jdbc[2]: exception
 org.h2.jdbc.JdbcSQLException: Table "SECTEURDAO" not found; SQL statement:
 SELECT ID FROM SECTEURDAO WHERE ID <> ID [42102-161]
-04-23 19:54:21 jdbc[2]: exception
+04-25 11:51:30 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "CONFIGURATIONDAO_CONTAINERDAO" not found; SQL statement:
+SELECT containers_IDCONTAINER FROM CONFIGURATIONDAO_CONTAINERDAO WHERE containers_IDCONTAINER <> containers_IDCONTAINER [42102-161]
+04-25 11:51:30 jdbc[2]: exception
 org.h2.jdbc.JdbcSQLException: Table "SEQUENCE" not found; SQL statement:
 SELECT SEQ_NAME FROM SEQUENCE WHERE SEQ_NAME <> SEQ_NAME [42102-161]

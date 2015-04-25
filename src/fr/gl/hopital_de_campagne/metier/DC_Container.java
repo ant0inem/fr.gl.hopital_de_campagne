@@ -200,7 +200,7 @@ public class DC_Container implements DisplayableClass {
 
 	@Override
 	public Object getObject(int index) {
-		if(index==-1) return null;
+		if(index==-1 || index>=getCont_List().size()) return null;
 		return this.getCont_List().get(index);
 	}
 	
