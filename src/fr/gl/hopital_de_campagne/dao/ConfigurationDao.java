@@ -72,6 +72,11 @@ public class ConfigurationDao {
 		return x;
 	}
 
+	@Override
+	public String toString() {
+		return this.getAvionName();
+	}
+
 	public void setContainers(List<ContainerDao> c) {
 		containers = c;
 	}
@@ -98,6 +103,7 @@ public class ConfigurationDao {
 	}
 
 	public String getAvionName() {
+		if(avionName==null) return "Configuration sans nom";
 		return avionName;
 	}
 

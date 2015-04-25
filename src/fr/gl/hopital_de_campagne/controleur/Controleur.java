@@ -9,7 +9,9 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
@@ -233,6 +235,13 @@ public class Controleur implements ActionListener, KeyListener,
 
 	public List<AvionDao> getAllAvionDao() {
 		return dao.getAllAvionDao();
+	}
+	
+	public List<ConfigurationDao> getAllConfigurationDao() {
+		List<ConfigurationDao> allConfiguration = new Vector<ConfigurationDao>();
+		allConfiguration.add(colisEmbarques);
+		allConfiguration.addAll(dao.getAllConfigurationDao());
+		return allConfiguration;
 	}
 
 	public static ConfigurationDao getOppositeConfigurationDao(
