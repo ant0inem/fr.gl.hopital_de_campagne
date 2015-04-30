@@ -23,6 +23,7 @@ import fr.gl.hopital_de_campagne.dao.ConfigurationDao;
 import fr.gl.hopital_de_campagne.dao.ContainerDao;
 import fr.gl.hopital_de_campagne.dao.Dao;
 import fr.gl.hopital_de_campagne.dao.SecteurDao;
+import fr.gl.hopital_de_campagne.gui.Accueil;
 import fr.gl.hopital_de_campagne.gui.MenuGUI;
 import fr.gl.hopital_de_campagne.gui.VueGestionBdD;
 import fr.gl.hopital_de_campagne.gui.VueGestionChargement;
@@ -73,6 +74,7 @@ public class Controleur implements ActionListener, KeyListener,
 		mainWindow
 				.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		mainWindow.setJMenuBar((new MenuGUI(this)).getMenuBar());
+		mainWindow.setContentPane(new Accueil());
 		mainWindow.setVisible(true);
 	}
 
