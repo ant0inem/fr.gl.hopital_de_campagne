@@ -75,15 +75,16 @@ public class VueGestionChargement extends JPanel {
 		titre2.setFont(titleFont);
 		titre2Panel.add(titre2);
 		centerRight.add(titre2Panel);
-		JPanel configurationLigne = new JPanel();
-		configurationLigne.setLayout(new BoxLayout(configurationLigne, BoxLayout.X_AXIS));
-		configurationSelection = new JComboBox<ConfigurationDao>(
-				(Vector<ConfigurationDao>) Controleur.getInstance()
-						.getAllConfigurationDao());
-		configurationLigne.add(configurationSelection);
-		JButton saveConfigurationButton = new JButton("Sauvegarder");
-		configurationLigne.add(saveConfigurationButton);
-		centerRight.add(configurationLigne);
+//		JPanel configurationLigne = new JPanel();
+//		configurationLigne.setLayout(new BoxLayout(configurationLigne, BoxLayout.X_AXIS));
+//		configurationSelection = new JComboBox<ConfigurationDao>(
+//				(Vector<ConfigurationDao>) Controleur.getInstance()
+//						.getAllConfigurationDao());
+//		configurationLigne.add(configurationSelection);
+//		JButton saveConfigurationButton = new JButton("Sauvegarder");
+//		configurationLigne.add(saveConfigurationButton);
+//		centerRight.add(configurationLigne);
+		centerRight.add(Box.createVerticalStrut(27));
 		tableUsedContainer = new MyTable(usedContainers, l);
 		centerRight.add(tableUsedContainer.getTable());
 		center.add(centerRight);
